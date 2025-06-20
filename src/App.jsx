@@ -3,15 +3,6 @@ import Chest from './components/Chest'
 import RegistrationButton from './components/RegistrationButton'
 import CheckRegistration from './components/CheckRegistration'
 
-/**
- * Componente principal de la aplicación de sorteo
- * Estructura completa de página web con:
- * - Navbar superior
- * - Sección hero con información del sorteo
- * - Cofre 3D libre flotando sin contenedores ni controles
- * - Información adicional
- * - Footer
- */
 function App() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false)
 
@@ -38,16 +29,38 @@ function App() {
         </div>
       </nav>
 
-      {/* Sección principal del sorteo */}
+      {/* Contenido principal */}
       <main className="main-content">
-        {/* Sección Principal del Sorteo */}
+        {/* Sección del sorteo */}
         <section className="hero-section" id="sorteo">
           <div className="container">
-            <div className="row">
-              {/* Columna Izquierda - Tarjetas */}
-              <div className="col-md-6">
-                <div className="cards-container">
-                  {/* Tarjeta Fecha */}
+            <div className="row align-items-center d-flex flex-row">
+              {/* Columna izquierda: cofre */}
+              <div className="col-md-6 d-flex justify-content-center">
+                <div className="chest-container px-2 text-center">
+                  {/* Sección del título y subtítulo - alineada con la primera card */}
+                  <div className="hero-text-section">
+                    <h1 className="hero-title">¡Participá en el Sorteo del Día del Niño!</h1>
+                    <p className="hero-subtitle">Hacé clic en el cofre para obtener tu número de sorteo único</p>
+                  </div>
+                  
+                  {/* Sección del cofre - alineada con la segunda card */}
+                  <div className="chest-section">
+                    <div className="chest-wrapper">
+                      <Chest size={450} staticChest />
+                    </div>
+                  </div>
+                  
+                  {/* Sección del botón - alineada con la tercera card */}
+                  <div className="button-section">
+                    <button className="btn btn-success btn-lg chest-button">Abrir Cofre</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Columna derecha: tarjetas */}
+              <div className="col-md-6 d-flex justify-content-center">
+                <div className="cards-container px-2">
                   <div className="info-card shadow-sm">
                     <div className="card-content">
                       <div className="card-icon">📅</div>
@@ -57,19 +70,15 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Tarjeta Ubicación */}
                   <div className="info-card shadow-sm">
                     <div className="card-content">
                       <div className="card-icon">📍</div>
                       <div className="card-info">
                         <h5 className="card-title">Ubicación</h5>
-                        <p className="card-text">La Estación – Parque Municipal<br/>Gral. Güemes 700, B1870 Avellaneda</p>
+                        <p className="card-text">La Estación – Parque Municipal<br />Gral. Güemes 700, B1870 Avellaneda</p>
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Tarjeta Premios */}
                   <div className="info-card shadow-sm">
                     <div className="card-content">
                       <div className="card-icon">🏆</div>
@@ -79,18 +88,6 @@ function App() {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Columna Derecha - Cofre */}
-              <div className="col-md-6">
-                <div className="chest-container">
-                  <h1 className="hero-title">¡Participa en el Sorteo del Día del Niño!</h1>
-                  <p className="hero-subtitle">Haz clic en el cofre para obtener tu número de sorteo único</p>
-                  <div className="chest-wrapper">
-                    <Chest size={280} staticChest />
-                  </div>
-                  <button className="btn btn-success btn-lg chest-button">Abrir Cofre</button>
                 </div>
               </div>
             </div>
@@ -104,17 +101,17 @@ function App() {
             <div className="steps">
               <div className="step">
                 <div className="step-number">1</div>
-                <h3>Haz Clic en el Cofre</h3>
-                <p>Interactúa con el cofre animado para obtener tu número único</p>
+                <h3>Hacé Clic en el Cofre</h3>
+                <p>Interactuá con el cofre animado para obtener tu número único</p>
               </div>
               <div className="step">
                 <div className="step-number">2</div>
-                <h3>Guarda tu Número</h3>
-                <p>Anota tu número de sorteo</p>
+                <h3>Guardá tu Número</h3>
+                <p>Anotá tu número de sorteo</p>
               </div>
               <div className="step">
                 <div className="step-number">3</div>
-                <h3>Espera el Sorteo</h3>
+                <h3>Esperá el Sorteo</h3>
                 <p>El 10 de agosto anunciaremos los números ganadores</p>
               </div>
             </div>
@@ -122,7 +119,7 @@ function App() {
         </section>
       </main>
 
-      {/* Nuevo Footer estilo Avellaneda */}
+      {/* Footer institucional */}
       <footer className="footer-avellaneda">
         <div className="footer-emergencias">
           <div className="footer-emergencia-item">
@@ -171,4 +168,4 @@ function App() {
   )
 }
 
-export default App 
+export default App

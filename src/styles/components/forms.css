@@ -1,0 +1,317 @@
+/* ==============================================
+   FORMS & MODALS COMPONENT STYLES
+   ============================================== */
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* Registration Form */
+.registration-form {
+  background: var(--text-white);
+  padding: var(--spacing-xl);
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-light-green);
+}
+
+.registration-form h2 {
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  font-size: 1.8rem;
+  font-family: 'Nexa-Heavy', sans-serif;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-green);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  line-height: 1;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.close-button:hover {
+  background: #f0f0f0;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-green);
+  font-weight: 500;
+  font-family: 'Nexa-ExtraLight', sans-serif;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1.5px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-light-green);
+  box-shadow: 0 0 0 3px rgba(43, 249, 36, 0.1);
+}
+
+.form-group input.error {
+  border-color: #ff4444;
+  background: #fff8f8;
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Error Messages */
+.error-message {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* Special Form Elements */
+.existing-ticket-message {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.existing-ticket-message h3 {
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+.existing-ticket-message .ticket-number {
+  font-size: 3rem;
+  color: var(--primary-green);
+  font-weight: 700;
+  margin: var(--spacing-lg) 0;
+  text-shadow: 0 2px 8px rgba(43, 249, 36, 0.3);
+}
+
+/* Login DNI Form */
+.login-dni-form {
+  background: var(--text-white);
+  padding: var(--spacing-xl);
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-light-green);
+}
+
+/* DNI Lookup Modal */
+.dni-lookup-modal {
+  background: var(--text-white);
+  padding: var(--spacing-xl);
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-light-green);
+}
+
+.lookup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.login-dni-form h2 {
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+  font-family: 'Nexa-Heavy', sans-serif;
+}
+
+.lookup-success h3 {
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
+  font-family: 'Nexa-ExtraLight', sans-serif;
+}
+
+/* Success Messages */
+.success-message {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+}
+
+.success-message h3 {
+  color: var(--primary-green);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+.success-message p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Registration Modal */
+.registration-modal {
+  background: var(--text-white);
+  padding: 2.5rem;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-light-green);
+}
+
+.registration-success {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.registration-success .success-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-light-green);
+  color: var(--text-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto var(--spacing-xl);
+  box-shadow: 0 4px 16px rgba(43, 249, 36, 0.4);
+  animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Lookup Success */
+.lookup-success {
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-light-green);
+  color: var(--text-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto var(--spacing-lg);
+  box-shadow: 0 4px 12px rgba(43, 249, 36, 0.3);
+}
+
+.lookup-success .ticket-number {
+  font-size: 3rem;
+  color: var(--primary-green);
+  font-weight: 700;
+  margin: var(--spacing-lg) 0;
+  text-shadow: 0 2px 8px rgba(43, 249, 36, 0.3);
+  animation: numberPulse 1.5s ease-in-out infinite;
+}
+
+/* Additional Elements */
+.existing-note {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: var(--spacing-md) 0;
+  padding: 0.8rem;
+  background: #f5f5f5;
+  border-radius: var(--border-radius);
+}
+
+.submit-error {
+  text-align: center;
+  background: #fff0f0;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: 1px solid #ffcdd2;
+  margin: var(--spacing-md) 0;
+}
+
+.register-link {
+  background: none;
+  border: none;
+  color: var(--primary-green);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9rem;
+  transition: color var(--transition-fast);
+}
+
+.register-link:hover {
+  color: var(--primary-light-green);
+}
+
+.registration-details {
+  margin: var(--spacing-lg) 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.registration-details p {
+  margin: 0.3rem 0;
+} 

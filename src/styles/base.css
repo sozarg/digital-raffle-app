@@ -1,0 +1,97 @@
+/* ==============================================
+   BASE STYLES - Fonts, Reset, Variables
+   ============================================== */
+
+/* CSS Variables para colores y medidas comunes */
+:root {
+  /* Colores principales */
+  --primary-green: #2B8232;
+  --primary-light-green: #2BF924;
+  --secondary-green: #A6CA6A;
+  --light-green: #8FBC8F;
+  --background-green: #d7fd98;
+  
+  /* Colores de texto */
+  --text-primary: #222;
+  --text-secondary: #666;
+  --text-white: #ffffff;
+  
+  /* Espaciado */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* Bordes y sombras */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(43, 130, 50, 0.3);
+  --shadow-lg: 0 8px 25px rgba(43, 130, 50, 0.15);
+  
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('../assets/fonts/Coolvetica.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nexa-ExtraLight';
+  src: url('../assets/fonts/Nexa-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa-Heavy';
+  src: url('../assets/fonts/Nexa-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('../assets/fonts/Nexa-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nexa-ExtraLight', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--text-white);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utilidades comunes */
+.cursor-pointer {
+  cursor: pointer;
+} 

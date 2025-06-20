@@ -1,0 +1,67 @@
+/* ==============================================
+   CARDS COMPONENT STYLES
+   ============================================== */
+
+/* Cards Container */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.2rem;
+  max-width: 400px;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 500px; /* Altura mínima para alinear con el cofre */
+}
+
+/* Individual Info Card */
+.info-card {
+  background: var(--text-white);
+  border: 1px solid rgba(43, 249, 36, 0.3);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 0; /* Eliminar margin-bottom para usar gap */
+  flex: 1; /* Hacer que las cards se expandan uniformemente */
+  display: flex;
+  align-items: center;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Content Layout */
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.card-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-title {
+  color: var(--primary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+}
+
+.card-text {
+  color: var(--text-secondary);
+  font-family: 'Nexa-ExtraLight', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+} 

@@ -1,0 +1,117 @@
+/* ==============================================
+   LAYOUT STYLES - Main structure, containers
+   ============================================== */
+
+/* Main Content Layout */
+.main-content {
+  flex: 1;
+  margin-top: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  padding-top: 120px;
+}
+
+/* Hero Section Layout */
+.hero-section {
+  background: radial-gradient(circle, var(--background-green) 0%, var(--secondary-green) 60%, transparent 100%);
+  position: relative;
+  overflow: visible;
+  padding: var(--spacing-xxl) 0;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 180vw;
+  height: 120vh;
+  background: radial-gradient(circle, var(--background-green) 0%, var(--secondary-green) 60%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Column Alignment */
+.hero-section .row {
+  align-items: stretch !important;
+}
+
+.hero-section .col-md-6 {
+  display: flex !important;
+  align-items: center;
+}
+
+/* Info Section Layout */
+.info-section {
+  padding: 4rem var(--spacing-xl);
+  background: #e6f9e6;
+}
+
+.info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-xxl);
+  color: #333;
+  font-family: 'Nexa-Heavy', sans-serif;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xxl);
+  margin-top: var(--spacing-xl);
+}
+
+.step {
+  background: var(--text-white);
+  padding: var(--spacing-xl);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform var(--transition-normal);
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-green);
+  color: var(--text-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto var(--spacing-md);
+  border: 2px solid var(--primary-light-green);
+}
+
+.step h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-md);
+  color: #333;
+  font-family: 'Nexa-Heavy', sans-serif;
+}
+
+.step p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-family: 'Nexa-ExtraLight', sans-serif;
+} 

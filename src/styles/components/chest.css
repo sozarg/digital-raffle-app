@@ -1,0 +1,71 @@
+/* ==============================================
+   CHEST COMPONENT STYLES
+   ============================================== */
+
+/* Chest Main Container */
+.chest-main-container {
+  position: relative;
+  text-align: center;
+  margin: 0; /* Sin margin extra para usar flex spacing */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Optimización adicional para centrar mejor y mover a la derecha */
+  transform: translateY(-40px) translateX(30px);
+}
+
+/* Lottie Container */
+.chest-lottie-container {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.chest-lottie-container.static {
+  cursor: default;
+}
+
+/* Optimización del Lottie del cofre para reducir espacio vacío */
+.chest-lottie-container > div {
+  transform: scale(1.4) translate(-5%, -8%);
+  transform-origin: center center;
+}
+
+/* Para el cofre estático, aplicar la misma optimización */
+.chest-lottie-container.static > div {
+  transform: scale(1.4) translate(-5%, -8%);
+  transform-origin: center center;
+}
+
+/* Chest Static Styles */
+.chest-container.static {
+  pointer-events: none;
+  transform: none;
+  filter: none !important;
+  opacity: 1;
+}
+
+.chest-container.static:hover {
+  transform: none;
+  filter: none !important;
+}
+
+/* Chest Aura Effect */
+.chest-aura {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(43, 249, 36, 0.2) 0%, rgba(43, 249, 36, 0.1) 50%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+
+/* Chest Shake Animation */
+.chest-shake {
+  animation: chest-shake-anim 0.4s cubic-bezier(.36,.07,.19,.97) both;
+} 

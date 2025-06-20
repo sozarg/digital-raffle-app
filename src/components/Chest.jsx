@@ -99,7 +99,9 @@ const Chest = ({ size = 250, staticChest = false }) => {
             initialSegment={staticChest ? [0, 1] : undefined}
             style={{ 
               width: size, 
-              height: size
+              height: size,
+              transform: 'scale(1.4) translate(-3%, -5%)',
+              transformOrigin: 'center center'
             }}
           />
         </div>

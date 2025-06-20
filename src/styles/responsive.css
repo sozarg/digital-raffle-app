@@ -1,0 +1,249 @@
+/* ==============================================
+   RESPONSIVE DESIGN - Media Queries
+   ============================================== */
+
+/* Tablet Breakpoint - 991px and below */
+@media (max-width: 991px) {
+  /* Hero Section */
+  .hero-section {
+    min-height: auto;
+    padding: var(--spacing-xxl) 0;
+  }
+  
+  .hero-section .col-md-6 {
+    display: block !important;
+  }
+  
+  /* Cards */
+  .cards-container {
+    max-width: 500px;
+    margin-bottom: var(--spacing-xxl);
+    min-height: auto;
+    gap: var(--spacing-lg);
+  }
+  
+  /* Chest Container */
+  .chest-container {
+    min-height: auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+    gap: var(--spacing-xl);
+  }
+  
+  .hero-text-section,
+  .chest-section,
+  .button-section {
+    flex: none;
+  }
+  
+  /* Resetear transforms en tablet */
+  .chest-section {
+    transform: translateY(-20px) translateX(20px);
+  }
+  
+  .chest-main-container {
+    transform: translateY(-10px) translateX(10px);
+  }
+  
+  /* Typography */
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .chest-wrapper {
+    margin: var(--spacing-md) 0;
+  }
+  
+  /* Info Section */
+  .info-container h2 {
+    font-size: 2rem;
+  }
+  
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-emergencias {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .footer-emergencia-item {
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 0.7rem;
+  }
+  
+  .footer-avellaneda-main {
+    padding: 2.5rem var(--spacing-sm) var(--spacing-lg) var(--spacing-sm);
+  }
+}
+
+/* Mobile Breakpoint - 768px and below */
+@media (max-width: 768px) {
+  /* Main Layout */
+  .main-content {
+    padding-top: 100px;
+  }
+  
+  /* Navigation */
+  .nav-container {
+    padding: var(--spacing-md);
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .nav-links {
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links .register-button,
+  .nav-links .nav-check-button {
+    margin: var(--spacing-sm);
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    padding: var(--spacing-xl) 0;
+    padding-top: var(--spacing-md);
+  }
+  
+  /* Cards */
+  .cards-container {
+    gap: var(--spacing-md);
+    min-height: auto;
+  }
+  
+  .info-card {
+    padding: var(--spacing-md);
+    flex: none; /* En móvil no expandir */
+  }
+  
+  .card-icon {
+    font-size: 1.5rem;
+  }
+  
+  /* Chest */
+  .chest-container {
+    min-height: auto;
+    padding: var(--spacing-md);
+    gap: var(--spacing-lg);
+  }
+  
+  .hero-text-section,
+  .chest-section,
+  .button-section {
+    flex: none;
+  }
+  
+  /* Resetear transforms en móvil completamente */
+  .chest-section {
+    transform: none;
+  }
+  
+  .chest-main-container {
+    transform: none;
+  }
+  
+  /* Typography */
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Buttons */
+  .chest-button {
+    padding: 0.7rem var(--spacing-xl);
+    font-size: 1rem;
+  }
+  
+  .register-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile Breakpoint - 480px and below */
+@media (max-width: 480px) {
+  /* DNI Lookup Modal */
+  .dni-lookup-modal {
+    width: 95%;
+    padding: var(--spacing-lg);
+  }
+
+  .lookup-success .ticket-number {
+    font-size: 2.5rem;
+  }
+  
+  /* Registration Modal */
+  .registration-modal {
+    padding: var(--spacing-lg);
+    width: 95%;
+    margin: var(--spacing-md);
+  }
+
+  .registration-form {
+    gap: var(--spacing-md);
+  }
+
+  .registration-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.7rem;
+  }
+
+  .registration-success .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  /* Typography */
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* Large Desktop - 1200px and above */
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .cards-container {
+    max-width: 450px;
+  }
+  
+  .info-card {
+    padding: var(--spacing-xl);
+  }
+} 

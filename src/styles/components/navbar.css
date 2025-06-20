@@ -1,0 +1,76 @@
+/* ==============================================
+   NAVBAR COMPONENT STYLES
+   ============================================== */
+
+.navbar {
+  background: var(--text-white);
+  box-shadow: 0 4px 20px rgba(43, 130, 50, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
+  padding: var(--spacing-sm) 0;
+  transition: box-shadow var(--transition-fast);
+  border-bottom: none;
+  background-color: var(--text-white);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-xl);
+}
+
+.nav-logo h2 {
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  font-family: 'Coolvetica', sans-serif;
+}
+
+.nav-links a {
+  color: var(--secondary-green);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color var(--transition-normal);
+  font-family: 'Coolvetica', sans-serif;
+  font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+  color: var(--light-green);
+}
+
+.nav-links .register-button {
+  margin-left: var(--spacing-sm);
+}
+
+/* Botón "Ya me anoté" en el navbar */
+.nav-check-button {
+  background: var(--text-white);
+  color: var(--secondary-green);
+  border: 2px solid var(--secondary-green);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  font-weight: 400;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  font-size: 1rem;
+  margin-left: var(--spacing-md);
+  font-family: 'Coolvetica', sans-serif;
+}
+
+.nav-check-button:hover {
+  background: var(--secondary-green);
+  color: var(--text-white);
+} 

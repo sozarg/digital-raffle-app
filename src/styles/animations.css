@@ -1,0 +1,175 @@
+/* ==============================================
+   ANIMATIONS & KEYFRAMES
+   ============================================== */
+
+/* Chest Shake Animation */
+@keyframes chest-shake-anim {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+  100% { transform: none; }
+}
+
+/* Flying Number Animation */
+.flying-number {
+  position: absolute;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  text-shadow: 0 2px 8px var(--text-white), 0 1px 0 var(--primary-light-green);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.95;
+  animation: fly-number 1.2s cubic-bezier(.4,.1,.7,1.1) forwards;
+}
+
+@keyframes fly-number {
+  0% {
+    opacity: 0.95;
+    transform: translate(0, 0) scale(1);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(calc(var(--fly-dir, 1) * 40px), -60px) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--fly-dir, 1) * 90px), -120px) scale(0.9);
+  }
+}
+
+/* Ticket Popup Animation */
+.ticket-popup {
+  position: absolute;
+  left: 50%;
+  top: -70px;
+  transform: translateX(-50%) scale(1);
+  min-width: 240px;
+  background: var(--text-white);
+  border: 2.5px solid var(--primary-light-green);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(43,130,50,0.10);
+  padding: 1.1rem var(--spacing-lg) 1.1rem var(--spacing-lg);
+  z-index: 20;
+  text-align: center;
+  animation: ticket-popup-fade 1.1s cubic-bezier(.4,1.4,.6,1);
+}
+
+@keyframes ticket-popup-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px) scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* Ticket Popup From Chest */
+.ticket-popup-from-chest {
+  position: absolute;
+  left: 50%;
+  top: 68%;
+  transform: translate(-50%, 0) scale(0.85);
+  min-width: 240px;
+  background: var(--text-white);
+  border: 2.5px solid var(--primary-light-green);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(43,130,50,0.10);
+  padding: 1.1rem var(--spacing-lg) 1.1rem var(--spacing-lg);
+  z-index: 20;
+  text-align: center;
+  animation: ticket-popup-from-chest-fade 1.1s cubic-bezier(.4,1.4,.6,1);
+}
+
+@keyframes ticket-popup-from-chest-fade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -60px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -90px) scale(1);
+  }
+}
+
+/* Ticket Fly Animation */
+.ticket-fly {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-green);
+  text-shadow: 0 2px 4px rgba(43, 249, 36, 0.3);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ticket-fly.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Success Pop Animation */
+@keyframes successPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Number Pulse Animation */
+@keyframes numberPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Arrow Flicker Animation */
+@keyframes arrow-flicker {
+  0%, 100% { 
+    border-top-color: var(--primary-light-green);
+    filter: drop-shadow(0 2px 6px var(--primary-light-green)) brightness(1);
+  }
+  25% { 
+    border-top-color: var(--primary-green);
+    filter: drop-shadow(0 2px 6px var(--primary-green)) brightness(0.8);
+  }
+  50% { 
+    border-top-color: var(--primary-light-green);
+    filter: drop-shadow(0 2px 6px var(--primary-light-green)) brightness(1.2);
+  }
+  75% { 
+    border-top-color: #1AE615;
+    filter: drop-shadow(0 2px 6px #1AE615) brightness(1.4);
+  }
+}
+
+/* Ticket Content Styles */
+.ticket-title {
+  color: var(--primary-green);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.ticket-number {
+  color: var(--primary-green);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.ticket-number span {
+  color: var(--primary-light-green);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+} 

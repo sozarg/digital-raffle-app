@@ -1,0 +1,131 @@
+/* ==============================================
+   BUTTONS COMPONENT STYLES
+   ============================================== */
+
+/* Primary Chest Button */
+.chest-button {
+  background: var(--primary-green);
+  border-color: var(--primary-green);
+  font-family: 'Nexa-ExtraLight', sans-serif;
+  font-weight: 600;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border-radius: var(--border-radius);
+  margin: 0; /* Remover margin para usar flex spacing */
+  color: var(--text-white);
+  border: none;
+  cursor: pointer;
+}
+
+.chest-button:hover {
+  background: var(--primary-light-green);
+  border-color: var(--primary-light-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(43, 249, 36, 0.4);
+  color: var(--text-white);
+}
+
+/* Register Button */
+.register-button {
+  background: var(--secondary-green);
+  color: var(--text-white);
+  border: none;
+  padding: 0.8rem var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-weight: 400;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(166, 202, 106, 0.2);
+  font-family: 'Coolvetica', sans-serif;
+}
+
+.register-button:hover {
+  background: var(--light-green);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(166, 202, 106, 0.3);
+}
+
+.register-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(166, 202, 106, 0.2);
+}
+
+/* Chest Action Button */
+.chest-action-btn {
+  background: var(--primary-green);
+  color: var(--text-white);
+  border: none;
+  padding: 0.8rem var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+  margin-top: var(--spacing-md);
+  box-shadow: 0 2px 8px rgba(43, 130, 50, 0.2);
+  font-family: 'Nexa-ExtraLight', sans-serif;
+}
+
+.chest-action-btn:hover {
+  background: var(--primary-light-green);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(43, 249, 36, 0.3);
+}
+
+.chest-action-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(43, 130, 50, 0.2);
+}
+
+.chest-action-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Secondary Button */
+.secondary-button {
+  background: var(--text-white);
+  color: var(--primary-green);
+  border: 2px solid var(--primary-green);
+  padding: 0.8rem var(--spacing-xl);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-top: var(--spacing-lg);
+}
+
+.secondary-button:hover {
+  background: var(--primary-green);
+  color: var(--text-white);
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--primary-green);
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  margin-top: var(--spacing-md);
+}
+
+.submit-button:hover {
+  background: var(--primary-light-green);
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+} 
