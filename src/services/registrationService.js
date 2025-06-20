@@ -1,35 +1,59 @@
-const STORAGE_KEY = 'digital-reward-chest-registrations';
-const LAST_TICKET_KEY = 'digital-reward-chest-last-ticket';
+const STORAGE_KEY = 'raffle_registrations';
 
-export const getRegistrations = () => {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
+// Simulamos una base de datos en memoria
+let registrations = [];
+let nextTicketNumber = 1;
+
+// Obtener todos los registros
+const getAllRegistrations = () => {
+  return [...registrations];
 };
 
-export const getLastTicketNumber = () => {
-  const lastTicket = localStorage.getItem(LAST_TICKET_KEY);
-  return lastTicket ? parseInt(lastTicket) : 0;
+// Guardar todos los registros
+const saveAllRegistrations = (registrations) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(registrations));
 };
 
+// Generar número de ticket único
+const generateTicketNumber = (registrations) => {
+  if (registrations.length === 0) return 1;
+  
+  const numbers = registrations.map(r => r.ticketNumber);
+  return Math.max(...numbers) + 1;
+};
+
+// Buscar registro por DNI
 export const findRegistrationByDNI = (dni) => {
-  const registrations = getRegistrations();
   return registrations.find(reg => reg.dni === dni);
 };
 
+// Guardar nuevo registro
 export const saveRegistration = (formData) => {
-  const registrations = getRegistrations();
-  const lastTicket = getLastTicketNumber();
-  const newTicketNumber = lastTicket + 1;
+  // Asignar número de ticket
+  const ticketNumber = nextTicketNumber++;
   
+  // Crear el registro
   const registration = {
     ...formData,
-    ticketNumber: newTicketNumber,
-    registrationDate: new Date().toISOString()
+    ticketNumber,
+    registrationDate: new Date()
   };
   
+  // Guardar en nuestra "base de datos"
   registrations.push(registration);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(registrations));
-  localStorage.setItem(LAST_TICKET_KEY, newTicketNumber.toString());
   
   return registration;
+};
+
+// Obtener total de registros
+export const getTotalRegistrations = () => {
+  return registrations.length;
+};
+
+// Obtener último número asignado
+export const getLastTicketNumber = () => {
+  if (registrations.length === 0) return 0;
+  
+  const numbers = registrations.map(r => r.ticketNumber);
+  return Math.max(...numbers);
 }; 

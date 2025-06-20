@@ -1,22 +1,14 @@
 import React, { useRef, useState } from "react";
 import Lottie from "lottie-react";
-import chestAnimation from "./chest.json";
-import RegistrationForm from "./components/RegistrationForm";
-import { findRegistrationByDNI, saveRegistration } from "./services/registrationService";
+import chestAnimation from "../assets/optimized-chest.json";
+import RegistrationForm from "./RegistrationForm";
+import { findRegistrationByDNI, saveRegistration } from "../services/registrationService";
 
 function randomInt(a, b) {
   return Math.floor(Math.random() * (b - a + 1)) + a;
 }
 
-/**
- * Componente del cofre que maneja:
- * - Carga del modelo 3D chest.glb
- * - Reproducción de la animación "Open" al hacer clic
- * - Formulario de registro
- * - Generación y visualización del número de sorteo
- * - Animación flotante del texto del número
- */
-const Chest = ({ size = 250 }) => {
+const Chest = ({ size = 250, staticChest = false }) => {
   const lottieRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const [ticket, setTicket] = useState(null);
@@ -25,7 +17,7 @@ const Chest = ({ size = 250 }) => {
   const [existingTicket, setExistingTicket] = useState(null);
 
   const handleChestClick = () => {
-    if (isOpen) return;
+    if (isOpen || staticChest) return;
     setShowForm(true);
   };
 
@@ -60,25 +52,16 @@ const Chest = ({ size = 250 }) => {
   };
 
   // Posición inicial (cerradura) y final (arriba a la derecha del cofre)
-  const startTop = size * 0.68;
-  const startLeft = size / 2;
-  const endTop = size * 0.13;
-  const endLeft = size * 0.92;
+  const startTop = staticChest ? size * 0.68 - 20 : size * 0.68;
+  const startLeft = staticChest ? (size / 2) - 8 : size / 2;
+  const endTop = staticChest ? size * 0.13 - 20 : size * 0.13;
+  const endLeft = staticChest ? (size * 0.92) - 8 : size * 0.92;
 
   return (
     <>
-      <div
-        style={{
-          width: size,
-          height: size + 80,
-          margin: "0 auto",
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      {/* Contenedor del cofre - SIN estilos hardcodeados */}
+      <div className="chest-main-container">
+        
         {/* Aura detrás del cofre */}
         <div
           className="chest-aura"
@@ -89,6 +72,7 @@ const Chest = ({ size = 250 }) => {
             top: `calc(50% - ${((size * 1.25) / 2)}px)`,
           }}
         />
+        
         {/* Número animado: sale del cofre y se queda arriba a la derecha */}
         {ticket !== null && (
           <span
@@ -101,42 +85,38 @@ const Chest = ({ size = 250 }) => {
             #{ticket.toString().padStart(4, '0')}
           </span>
         )}
+        
         {/* Contenedor clickable del cofre */}
         <div
           onClick={handleChestClick}
-          className={`chest-container ${isOpen ? 'chest-opening' : 'cursor-pointer'}`}
-          style={{
-            position: "absolute",
-            left: size * 0.08,
-            top: 0,
-            width: size,
-            height: size,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 2,
-            cursor: isOpen ? 'default' : 'pointer',
-          }}
+          className={`chest-lottie-container ${staticChest ? 'static' : ''} ${isOpen ? 'chest-opening' : 'cursor-pointer'}`}
         >
           <Lottie
             lottieRef={lottieRef}
             animationData={chestAnimation}
+            autoplay={true}
             loop={false}
-            autoplay={false}
-            style={{ width: size, height: size, background: "transparent" }}
+            initialSegment={staticChest ? [0, 1] : undefined}
+            style={{ 
+              width: size, 
+              height: size
+            }}
           />
         </div>
-        <button 
-          className="chest-action-btn" 
-          onClick={handleChestClick} 
-          type="button"
-          disabled={isOpen}
-        >
-          ¡Abrir mi número!
-        </button>
+        
+        {!staticChest && (
+          <button 
+            className="chest-action-btn" 
+            onClick={handleChestClick} 
+            type="button"
+            disabled={isOpen}
+          >
+            ¡Abrir mi número!
+          </button>
+        )}
       </div>
 
-      {showForm && (
+      {showForm && !staticChest && (
         <RegistrationForm
           onSubmit={handleFormSubmit}
           onClose={handleFormClose}
