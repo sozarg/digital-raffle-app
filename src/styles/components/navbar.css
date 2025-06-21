@@ -24,10 +24,34 @@
   padding: var(--spacing-md) var(--spacing-xl);
 }
 
-.nav-logo h2 {
-  color: var(--primary-green);
-  font-size: 1.5rem;
-  font-weight: 700;
+/* Logo Section - Más separado y clickeable */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-right: var(--spacing-xxl); /* Más separación del resto */
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.nav-logo a:hover {
+  transform: scale(1.02);
+}
+
+.nav-logo img {
+  height: 45px;
+  width: auto;
+  border-radius: 50%;
+  transition: box-shadow var(--transition-fast);
+}
+
+.nav-logo a:hover img {
+  box-shadow: 0 4px 12px rgba(43, 130, 50, 0.2);
 }
 
 .nav-links {
@@ -54,7 +78,7 @@
   margin-left: var(--spacing-sm);
 }
 
-/* Botón "Ya me anoté" en el navbar */
+/* Botón "Ver mi número" en el navbar */
 .nav-check-button {
   background: var(--text-white);
   color: var(--secondary-green);

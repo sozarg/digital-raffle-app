@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Chest from './components/Chest'
 import RegistrationButton from './components/RegistrationButton'
 import CheckRegistration from './components/CheckRegistration'
+import ParticlesBackground from './components/ParticlesBackground'
 
 function App() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false)
@@ -12,16 +13,20 @@ function App() {
 
   return (
     <div className="app">
+      {/* Partículas de fondo */}
+      <ParticlesBackground />
+      
       {/* Navbar */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <img src="/logoavellaneda.png" alt="Logo Avellaneda" style={{ height: 40, width: 'auto', display: 'block' }} />
+          <div className="nav-logo">
+            <a href="/">
+              <img src="/logoavellaneda.png" alt="Logo Avellaneda" />
+            </a>
           </div>
           <div className="nav-links">
             <a href="#sorteo">Sorteo</a>
             <a href="#como-participar">Cómo Participar</a>
-            <a href="#premios">Premios</a>
             <a href="#contacto">Contacto</a>
             <CheckRegistration onRegisterClick={handleRegisterClick} />
             <RegistrationButton />
@@ -35,8 +40,11 @@ function App() {
         <section className="hero-section" id="sorteo">
           <div className="container">
             <div className="row align-items-center d-flex flex-row">
+              {/* Columnas invisibles izquierdas */}
+              <div className="col-md-2"></div>
+              
               {/* Columna izquierda: cofre */}
-              <div className="col-md-6 d-flex justify-content-center">
+              <div className="col-md-4 d-flex justify-content-center">
                 <div className="chest-container px-2 text-center">
                   {/* Sección del título y subtítulo - alineada con la primera card */}
                   <div className="hero-text-section">
@@ -47,49 +55,58 @@ function App() {
                   {/* Sección del cofre - alineada con la segunda card */}
                   <div className="chest-section">
                     <div className="chest-wrapper">
-                      <Chest size={450} staticChest />
+                      <Chest size={500} staticChest />
                     </div>
-                  </div>
-                  
-                  {/* Sección del botón - alineada con la tercera card */}
-                  <div className="button-section">
-                    <button className="btn btn-success btn-lg chest-button">Abrir Cofre</button>
                   </div>
                 </div>
               </div>
 
               {/* Columna derecha: tarjetas */}
-              <div className="col-md-6 d-flex justify-content-center">
+              <div className="col-md-4 d-flex justify-content-center">
                 <div className="cards-container px-2">
-                  <div className="info-card shadow-sm">
-                    <div className="card-content">
-                      <div className="card-icon">📅</div>
-                      <div className="card-info">
-                        <h5 className="card-title">Fecha del Sorteo</h5>
-                        <p className="card-text">Domingo, 18 de agosto</p>
+                  {/* Primera card - Fecha del Sorteo */}
+                  <div className="cards-section">
+                    <div className="info-card shadow-sm">
+                      <div className="card-content">
+                        <div className="card-icon">📅</div>
+                        <div className="card-info">
+                          <h5 className="card-title">Fecha del Sorteo</h5>
+                          <p className="card-text">Domingo, 18 de agosto</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="info-card shadow-sm">
-                    <div className="card-content">
-                      <div className="card-icon">📍</div>
-                      <div className="card-info">
-                        <h5 className="card-title">Ubicación</h5>
-                        <p className="card-text">La Estación – Parque Municipal<br />Gral. Güemes 700, B1870 Avellaneda</p>
+                  
+                  {/* Segunda card - Ubicación */}
+                  <div className="cards-section">
+                    <div className="info-card shadow-sm">
+                      <div className="card-content">
+                        <div className="card-icon">📍</div>
+                        <div className="card-info">
+                          <h5 className="card-title">Ubicación</h5>
+                          <p className="card-text">La Estación – Parque Municipal<br />Gral. Güemes 700, B1870 Avellaneda</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="info-card shadow-sm">
-                    <div className="card-content">
-                      <div className="card-icon">🏆</div>
-                      <div className="card-info">
-                        <h5 className="card-title">Premios</h5>
-                        <p className="card-text">¡Bicicletas, tablets, juguetes y más!</p>
+                  
+                  {/* Tercera card - Premios */}
+                  <div className="cards-section">
+                    <div className="info-card shadow-sm">
+                      <div className="card-content">
+                        <div className="card-icon">🏆</div>
+                        <div className="card-info">
+                          <h5 className="card-title">Premios</h5>
+                          <p className="card-text">¡Bicicletas, tablets, juguetes y más!</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              {/* Columnas invisibles derechas */}
+              <div className="col-md-2"></div>
             </div>
           </div>
         </section>
@@ -120,7 +137,7 @@ function App() {
       </main>
 
       {/* Footer institucional */}
-      <footer className="footer-avellaneda">
+      <footer className="footer-avellaneda" id="contacto">
         <div className="footer-emergencias">
           <div className="footer-emergencia-item">
             <div className="footer-emergencia-icon">+</div>

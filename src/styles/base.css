@@ -76,6 +76,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 body {
@@ -83,12 +84,14 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--text-white);
+  overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 /* Utilidades comunes */

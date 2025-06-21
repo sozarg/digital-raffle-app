@@ -17,6 +17,7 @@
 @import './styles/components/buttons.css';
 @import './styles/components/forms.css';
 @import './styles/components/footer.css';
+@import './styles/components/particles.css';
 
 /* Animations & Effects */
 @import './styles/animations.css';

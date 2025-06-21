@@ -132,7 +132,7 @@ const RegistrationForm = ({
               </p>
             )}
             <button 
-              className="secondary-button"
+              className="modal-button secondary"
               onClick={onClose}
             >
               Cerrar
@@ -149,10 +149,12 @@ const RegistrationForm = ({
         <button className="close-button" onClick={onClose}>×</button>
         
         <form onSubmit={handleSubmit} className="registration-form">
-          <h2>Registro para el sorteo</h2>
-          <p className="form-description">
-            Completá tus datos para participar
-          </p>
+          <div className="modal-header">
+            <h2>Registro para el sorteo</h2>
+            <p className="form-description">
+              ¡Completá el formulario para participar del gran sorteo del Día del Niño!
+            </p>
+          </div>
 
           <div className="form-group">
             <label htmlFor="fullName">Nombre completo *</label>
@@ -171,14 +173,14 @@ const RegistrationForm = ({
           </div>
 
           <div className="form-group">
-            <label htmlFor="dni">DNI *</label>
+            <label htmlFor="dni">Documento de Identidad *</label>
             <input
               type="number"
               id="dni"
               name="dni"
               value={formData.dni}
               onChange={handleChange}
-              placeholder="Ej: 30123456"
+              placeholder="Ej: 12345678 – sin puntos"
               className={errors.dni ? 'error' : ''}
               disabled={isSubmitting}
             />
@@ -275,7 +277,7 @@ const RegistrationForm = ({
 
           <button 
             type="submit" 
-            className="submit-button"
+            className="modal-button primary"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Registrando...' : 'Registrarme y obtener mi número'}

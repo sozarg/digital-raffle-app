@@ -25,7 +25,7 @@ const CheckRegistration = ({ onRegisterClick }) => {
         className="nav-check-button"
         onClick={handleOpenModal}
       >
-        Ya me anoté
+        Ver mi número
       </button>
 
       {showModal && (

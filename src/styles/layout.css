@@ -11,14 +11,57 @@
   border: none;
   padding: 0;
   padding-top: 120px;
+  overflow-x: hidden;
+}
+
+/* Bootstrap container override para prevenir overflow */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.row {
+  overflow-x: hidden;
+}
+
+/* Reglas específicas para secciones que no sean hero */
+.info-section .container,
+.footer-avellaneda .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.info-section .row,
+.footer-avellaneda .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.info-section .col-md-6,
+.footer-avellaneda .col-md-6 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Solo aplicar padding específico si no es del hero section */
+.row:not(.hero-section .row) {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col-md-6:not(.hero-section .col-md-6) {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Hero Section Layout */
 .hero-section {
   background: radial-gradient(circle, var(--background-green) 0%, var(--secondary-green) 60%, transparent 100%);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   padding: var(--spacing-xxl) 0;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .hero-section::before {
@@ -27,17 +70,17 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 180vw;
+  width: 150vw;
   height: 120vh;
   background: radial-gradient(circle, var(--background-green) 0%, var(--secondary-green) 60%, transparent 100%);
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   filter: blur(8px);
 }
 
 .hero-section > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Column Alignment */
@@ -45,21 +88,44 @@
   align-items: stretch !important;
 }
 
-.hero-section .col-md-6 {
+.hero-section .col-md-4 {
   display: flex !important;
   align-items: center;
+}
+
+.hero-section .col-md-2 {
+  /* Columnas invisibles para espaciado */
+}
+
+/* Columna izquierda (cofre) - margin derecho para acercarse al centro */
+.hero-section .col-md-5:first-of-type {
+  margin-right: 6rem;
+}
+
+/* Columna derecha (cards) - margin izquierdo para acercarse al centro */
+.hero-section .col-md-5:last-of-type {
+  margin-left: 6rem;
 }
 
 /* Info Section Layout */
 .info-section {
   padding: 4rem var(--spacing-xl);
-  background: #e6f9e6;
+  background: linear-gradient(135deg, 
+    rgba(166, 202, 106, 0.15) 0%, 
+    rgba(215, 253, 152, 0.25) 30%, 
+    rgba(166, 202, 106, 0.12) 70%, 
+    rgba(143, 188, 143, 0.18) 100%
+  );
+  position: relative;
+  z-index: 2;
 }
 
 .info-container {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .info-container h2 {
@@ -82,6 +148,8 @@
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   transition: transform var(--transition-normal);
+  position: relative;
+  z-index: 3;
 }
 
 .step:hover {

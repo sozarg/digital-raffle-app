@@ -1,5 +1,5 @@
 /* ==============================================
-   FORMS & MODALS COMPONENT STYLES
+   FORMS & MODALS COMPONENT STYLES - REDISEÑADO
    ============================================== */
 
 /* Modal Overlay */
@@ -9,220 +9,381 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
+  animation: overlayFadeIn 0.3s ease-out;
 }
 
-/* Registration Form */
-.registration-form {
+@keyframes overlayFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Modal Base Styles - Consistente para todos los modales */
+.dni-lookup-modal,
+.registration-modal {
   background: var(--text-white);
-  padding: var(--spacing-xl);
-  border-radius: 15px;
-  width: 90%;
-  max-width: 500px;
+  border-radius: var(--border-radius-lg);
+  position: relative;
+  box-shadow: 0 12px 40px rgba(43, 130, 50, 0.12);
+  border: 1px solid rgba(166, 202, 106, 0.3);
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   max-height: 90vh;
   overflow-y: auto;
-  position: relative;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--primary-light-green);
+  display: block;
+  flex-direction: column;
 }
 
-.registration-form h2 {
-  color: var(--primary-green);
-  margin-bottom: var(--spacing-lg);
-  text-align: center;
-  font-size: 1.8rem;
-  font-family: 'Nexa-Heavy', sans-serif;
+/* Reset cualquier flexbox que pueda interferir */
+.dni-lookup-modal *,
+.registration-modal * {
+  box-sizing: border-box;
 }
 
-/* Close Button */
+.dni-lookup-modal > div,
+.registration-modal > div {
+  display: block;
+  width: 100%;
+}
+
+@keyframes modalSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* DNI Lookup Modal */
+.dni-lookup-modal {
+  padding: var(--spacing-xxl);
+  width: 90%;
+  max-width: 480px;
+}
+
+/* Registration Modal */
+.registration-modal {
+  padding: var(--spacing-xxl);
+  width: 95%;
+  max-width: 600px;
+}
+
+/* Close Button - Mejorado */
 .close-button {
   position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
   background: none;
   border: none;
-  font-size: 1.5rem;
-  color: var(--primary-green);
+  font-size: 1.8rem;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: var(--spacing-sm);
   line-height: 1;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .close-button:hover {
-  background: #f0f0f0;
+  background: #f5f5f5;
+  color: var(--secondary-green);
+  transform: scale(1.1);
 }
 
-/* Form Groups */
+/* Modal Header - Jerarquía visual mejorada */
+.modal-header {
+  display: block;
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(166, 202, 106, 0.2);
+  width: 100%;
+}
+
+.modal-header h2 {
+  color: var(--secondary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 700;
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+}
+
+.modal-header .form-description {
+  color: #666;
+  font-family: 'Nexa-ExtraLight', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+/* Form Styles */
+.lookup-form,
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.lookup-form .modal-header,
+.registration-form .modal-header {
+  display: block !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.lookup-form .modal-header h2,
+.registration-form .modal-header h2 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-bottom: var(--spacing-lg) !important;
+}
+
+.lookup-form .modal-header .form-description,
+.registration-form .modal-header .form-description {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
 .form-group {
-  margin-bottom: 1.2rem;
-  position: relative;
+  margin-bottom: var(--spacing-xl);
+  display: block;
+  width: 100%;
+}
+
+.form-group:first-of-type {
+  margin-top: var(--spacing-lg);
 }
 
 .form-group label {
+  color: var(--secondary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: var(--spacing-md);
   display: block;
-  margin-bottom: var(--spacing-sm);
-  color: var(--primary-green);
-  font-weight: 500;
-  font-family: 'Nexa-ExtraLight', sans-serif;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.8rem;
-  border: 1.5px solid #ddd;
+  padding: 1rem var(--spacing-lg);
+  border: 2px solid #e8e8e8;
   border-radius: var(--border-radius);
   font-size: 1rem;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-normal);
+  font-family: 'Nexa-ExtraLight', sans-serif;
+  background: var(--text-white);
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--primary-light-green);
-  box-shadow: 0 0 0 3px rgba(43, 249, 36, 0.1);
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 0 3px rgba(166, 202, 106, 0.15);
 }
 
-.form-group input.error {
+.form-group input.error,
+.form-group select.error {
   border-color: #ff4444;
   background: #fff8f8;
-}
-
-.form-group input:disabled,
-.form-group select:disabled {
-  background: #f5f5f5;
-  cursor: not-allowed;
+  box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1);
 }
 
 /* Error Messages */
 .error-message {
   color: #ff4444;
-  font-size: 0.85rem;
-  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  margin-top: var(--spacing-sm);
   display: block;
+  font-family: 'Nexa-ExtraLight', sans-serif;
 }
 
 .error-container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   margin-top: var(--spacing-sm);
 }
 
-/* Special Form Elements */
-.existing-ticket-message {
+/* Register Suggestion */
+.register-suggestion {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  background: #f9fff9;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(166, 202, 106, 0.4);
   text-align: center;
-  padding: var(--spacing-xl) var(--spacing-md);
 }
 
-.existing-ticket-message h3 {
-  color: var(--primary-green);
-  margin-bottom: var(--spacing-md);
-  font-size: 1.5rem;
+.register-suggestion p {
+  color: #555;
+  font-family: 'Nexa-ExtraLight', sans-serif;
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
 }
 
-.existing-ticket-message .ticket-number {
-  font-size: 3rem;
-  color: var(--primary-green);
-  font-weight: 700;
-  margin: var(--spacing-lg) 0;
-  text-shadow: 0 2px 8px rgba(43, 249, 36, 0.3);
+/* Botones Consistentes para Modales */
+.modal-button {
+  padding: 1rem var(--spacing-xl);
+  border-radius: var(--border-radius);
+  font-family: 'Coolvetica', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
 }
 
-/* Login DNI Form */
-.login-dni-form {
+.modal-button.primary {
+  background: var(--secondary-green);
+  color: var(--text-white);
+  border: 2px solid var(--secondary-green);
+  box-shadow: 0 4px 12px rgba(166, 202, 106, 0.3);
+}
+
+.modal-button.primary:hover {
+  background: var(--light-green);
+  border-color: var(--light-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(166, 202, 106, 0.4);
+}
+
+.modal-button.secondary {
   background: var(--text-white);
-  padding: var(--spacing-xl);
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--primary-light-green);
+  color: var(--secondary-green);
+  border: 2px solid var(--secondary-green);
 }
 
-/* DNI Lookup Modal */
-.dni-lookup-modal {
-  background: var(--text-white);
-  padding: var(--spacing-xl);
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--primary-light-green);
+.modal-button.secondary:hover {
+  background: var(--secondary-green);
+  color: var(--text-white);
+  transform: translateY(-1px);
 }
 
-.lookup-form {
+/* Lookup Success */
+.lookup-success {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.lookup-success .success-icon {
+  width: 75px;
+  height: 75px;
+  background: var(--secondary-green);
+  color: var(--text-white);
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto var(--spacing-xl);
+  box-shadow: 0 6px 20px rgba(166, 202, 106, 0.4);
+  animation: successIconBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.login-dni-form h2 {
-  color: var(--primary-green);
-  margin-bottom: var(--spacing-sm);
-  text-align: center;
-  font-family: 'Nexa-Heavy', sans-serif;
+@keyframes successIconBounce {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .lookup-success h3 {
-  color: var(--primary-green);
+  color: var(--secondary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
   font-size: 1.5rem;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
 }
 
-.form-description {
-  text-align: center;
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-lg);
-  font-size: 0.95rem;
+/* Direct Result - Resultado más directo */
+.direct-result {
+  margin-bottom: var(--spacing-xl);
+}
+
+.direct-result p {
+  color: #333;
   font-family: 'Nexa-ExtraLight', sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
-/* Success Messages */
-.success-message {
-  text-align: center;
-  padding: var(--spacing-md) 0;
+.ticket-number-inline {
+  color: var(--secondary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(166, 202, 106, 0.3);
+  animation: ticketPulse 2s ease-in-out infinite;
 }
 
-.success-message h3 {
-  color: var(--primary-green);
-  margin-bottom: var(--spacing-md);
-  font-size: 1.5rem;
+@keyframes ticketPulse {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.05); 
+  }
 }
 
-.success-message p {
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-sm);
+.lookup-success .registration-details {
+  background: #f9fff9;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-xl) 0;
+  border-left: 4px solid var(--secondary-green);
 }
 
-/* Registration Modal */
-.registration-modal {
-  background: var(--text-white);
-  padding: 2.5rem;
-  border-radius: 15px;
-  width: 95%;
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--primary-light-green);
+.lookup-success .registration-details p {
+  color: #555;
+  font-family: 'Nexa-ExtraLight', sans-serif;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
 }
 
+.lookup-success .registration-details strong {
+  color: var(--secondary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
+}
+
+/* Registration Success */
 .registration-success {
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-md);
@@ -231,7 +392,7 @@
 .registration-success .success-icon {
   width: 80px;
   height: 80px;
-  background: var(--primary-light-green);
+  background: var(--secondary-green);
   color: var(--text-white);
   border-radius: 50%;
   display: flex;
@@ -239,47 +400,45 @@
   justify-content: center;
   font-size: 2.5rem;
   margin: 0 auto var(--spacing-xl);
-  box-shadow: 0 4px 16px rgba(43, 249, 36, 0.4);
-  animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 24px rgba(166, 202, 106, 0.4);
+  animation: successIconBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Lookup Success */
-.lookup-success {
-  text-align: center;
-  padding: var(--spacing-md);
+.registration-success h3 {
+  color: var(--secondary-green);
+  font-family: 'Nexa-Heavy', sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: var(--spacing-md);
 }
 
-.success-icon {
-  width: 60px;
-  height: 60px;
-  background: var(--primary-light-green);
-  color: var(--text-white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  margin: 0 auto var(--spacing-lg);
-  box-shadow: 0 4px 12px rgba(43, 249, 36, 0.3);
+.registration-success .ticket-number {
+  font-size: 4rem;
+  color: var(--secondary-green);
+  font-weight: 900;
+  margin: var(--spacing-xl) 0;
+  text-shadow: 0 3px 8px rgba(166, 202, 106, 0.3);
+  animation: ticketPulse 2s ease-in-out infinite;
+  font-family: 'Nexa-Heavy', sans-serif;
 }
 
-.lookup-success .ticket-number {
-  font-size: 3rem;
-  color: var(--primary-green);
-  font-weight: 700;
-  margin: var(--spacing-lg) 0;
-  text-shadow: 0 2px 8px rgba(43, 249, 36, 0.3);
-  animation: numberPulse 1.5s ease-in-out infinite;
+/* Spacing Improvements */
+.lookup-form .form-group:last-of-type {
+  margin-bottom: var(--spacing-xxl);
 }
 
-/* Additional Elements */
+.registration-form .form-group:last-of-type {
+  margin-bottom: var(--spacing-xxl);
+}
+
+/* Existing Note */
 .existing-note {
-  color: var(--text-secondary);
+  color: #555;
   font-size: 0.9rem;
-  margin: var(--spacing-md) 0;
-  padding: 0.8rem;
-  background: #f5f5f5;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: #f9fff9;
   border-radius: var(--border-radius);
+  font-family: 'Nexa-ExtraLight', sans-serif;
 }
 
 .submit-error {
