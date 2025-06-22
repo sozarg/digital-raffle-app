@@ -64,6 +64,11 @@ function App() {
               {/* Columna derecha: tarjetas */}
               <div className="col-md-4 d-flex justify-content-center">
                 <div className="cards-container px-2">
+                  {/* Nodos del timeline - posicionables */}
+                  <div className="timeline-node timeline-node-1"></div>
+                  <div className="timeline-node timeline-node-2"></div>
+                  <div className="timeline-node timeline-node-3"></div>
+                  
                   {/* Primera card - Fecha del Sorteo */}
                   <div className="cards-section">
                     <div className="info-card shadow-sm">
@@ -84,7 +89,7 @@ function App() {
                         <div className="card-icon">📍</div>
                         <div className="card-info">
                           <h5 className="card-title">Ubicación</h5>
-                          <p className="card-text">La Estación – Parque Municipal<br />Gral. Güemes 700, B1870 Avellaneda</p>
+                          <p className="card-text">La Estación – Güemes 700, Avellaneda</p>
                         </div>
                       </div>
                     </div>

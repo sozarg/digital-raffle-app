@@ -1,44 +1,82 @@
 /* ==============================================
-   CARDS COMPONENT STYLES - Polished Zig-Zag Timeline
+   CARDS COMPONENT STYLES - Symmetric Timeline Layout
    ============================================== */
 
-/* Cards Container - Fixed height with uniform spacing */
+/* Cards Container - Fixed height with symmetric spacing */
 .col-md-4 .cards-container,
 .cards-container {
   position: relative !important;
   width: 100% !important;
-  height: 550px !important; /* Altura optimizada para espaciado uniforme */
-  max-width: 500px !important;
+  height: 580px !important; /* Altura optimizada para el timeline */
+  max-width: 1000px !important; /* Más ancho para acomodar líneas largas */
   margin: 0 auto !important;
   padding: 2rem 1rem !important;
   display: block !important; /* Override Bootstrap flex */
 }
 
-/* Línea central perfectamente centrada */
+/* Línea vertical central - De arriba a abajo */
 .col-md-4 .cards-container::before,
 .cards-container::before {
   content: '';
   position: absolute;
   left: 50%; /* Perfectamente centrada */
   transform: translateX(-50%);
-  top: 60px; /* Empieza desde la primera card */
-  height: 430px; /* Altura que cubre todas las cards */
-  width: 3px; /* Línea un poco más gruesa para mejor visibilidad */
+  top: 40px; /* Empieza desde arriba */
+  height: 500px; /* Línea larga de arriba a abajo */
+  width: 4px; /* Grosor consistente */
   background: linear-gradient(to bottom, 
-    rgba(183, 240, 158, 0.5) 0%,
-    rgba(183, 240, 158, 0.7) 25%,
-    rgba(183, 240, 158, 0.8) 50%,
-    rgba(183, 240, 158, 0.7) 75%,
-    rgba(183, 240, 158, 0.5) 100%
+    rgba(167, 203, 107, 0.6) 0%,
+    rgba(167, 203, 107, 0.9) 50%,
+    rgba(167, 203, 107, 0.6) 100%
   );
   border-radius: 1.5px;
   z-index: 1;
   opacity: 0;
-  animation: drawCentralLine 1.5s ease 0.5s forwards;
+  animation: drawVerticalLine 1.5s ease 0.3s forwards;
 }
 
-/* Animación de la línea central */
-@keyframes drawCentralLine {
+/* Nodos del timeline - Fácilmente ajustables */
+.col-md-4 .cards-container .timeline-node,
+.cards-container .timeline-node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border: 4px solid #A7CB6B;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 0 3px rgba(255, 255, 255, 0.9),
+    0 6px 20px rgba(167, 203, 107, 0.5);
+  z-index: 4;
+  opacity: 0;
+  animation: popNode 0.6s ease forwards;
+}
+
+/* NODO 1 - Ajustar la posición cambiando el valor de 'top' */
+.col-md-4 .cards-container .timeline-node-1,
+.cards-container .timeline-node-1 {
+  top: 130px; /* ← CAMBIAR ESTE VALOR para mover el nodo 1 */
+  animation-delay: 1s;
+}
+
+/* NODO 2 - Ajustar la posición cambiando el valor de 'top' */
+.col-md-4 .cards-container .timeline-node-2,
+.cards-container .timeline-node-2 {
+  top: 300px; /* ← CAMBIAR ESTE VALOR para mover el nodo 2 */
+  animation-delay: 1.4s;
+}
+
+/* NODO 3 - Ajustar la posición cambiando el valor de 'top' */
+.col-md-4 .cards-container .timeline-node-3,
+.cards-container .timeline-node-3 {
+  top: 470px; /* ← CAMBIAR ESTE VALOR para mover el nodo 3 */
+  animation-delay: 1.8s;
+}
+
+/* Animación de la línea vertical */
+@keyframes drawVerticalLine {
   from {
     opacity: 0;
     transform: translateX(-50%) scaleY(0);
@@ -50,108 +88,125 @@
   }
 }
 
-/* Cards Sections - Espaciado uniforme */
+/* Animación de nodos */
+@keyframes popNode {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(-50%) translateY(-50%) scale(1.3) rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1) rotate(360deg);
+  }
+}
+
+/* Cards Sections - Posicionamiento simétrico */
 .col-md-4 .cards-container .cards-section,
 .cards-container .cards-section {
   position: absolute !important;
-  width: 48% !important; /* Ancho uniforme para todas las cards */
+  width: 38% !important; /* Ancho optimizado para mejor balance */
   height: auto !important;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* Card 1: IZQUIERDA (Fecha del Sorteo) - Espaciado uniforme */
-.col-md-4 .cards-container .cards-section:nth-child(1),
-.cards-container .cards-section:nth-child(1) {
-  top: 40px !important; /* Posición inicial */
+/* Card 1: IZQUIERDA (Fecha del Sorteo) - Nivel 1 */
+.col-md-4 .cards-container .cards-section:nth-child(4),
+.cards-container .cards-section:nth-child(4) {
+  top: 60px !important; /* Primer nivel */
   left: 0 !important;
 }
 
-.col-md-4 .cards-container .cards-section:nth-child(1) .info-card,
-.cards-container .cards-section:nth-child(1) .info-card {
+.col-md-4 .cards-container .cards-section:nth-child(4) .info-card,
+.cards-container .cards-section:nth-child(4) .info-card {
   position: relative !important;
   margin: 0 !important;
   width: 100% !important;
   max-width: none !important;
 }
 
-/* Card 2: DERECHA (Ubicación) - Espaciado uniforme */
-.col-md-4 .cards-container .cards-section:nth-child(2),
-.cards-container .cards-section:nth-child(2) {
-  top: 190px !important; /* Espaciado uniforme: 150px de diferencia */
+/* Card 2: DERECHA (Ubicación) - Nivel 2 */
+.col-md-4 .cards-container .cards-section:nth-child(5),
+.cards-container .cards-section:nth-child(5) {
+  top: 230px !important; /* Segundo nivel - espaciado uniforme */
   right: 0 !important;
   left: auto !important;
 }
 
-.col-md-4 .cards-container .cards-section:nth-child(2) .info-card,
-.cards-container .cards-section:nth-child(2) .info-card {
+.col-md-4 .cards-container .cards-section:nth-child(5) .info-card,
+.cards-container .cards-section:nth-child(5) .info-card {
   position: relative !important;
   margin: 0 !important;
   width: 100% !important;
   max-width: none !important;
 }
 
-/* Card 3: IZQUIERDA (Premios) - Espaciado uniforme */
-.col-md-4 .cards-container .cards-section:nth-child(3),
-.cards-container .cards-section:nth-child(3) {
-  top: 340px !important; /* Espaciado uniforme: 150px de diferencia */
+/* Card 3: IZQUIERDA (Premios) - Nivel 3 */
+.col-md-4 .cards-container .cards-section:nth-child(6),
+.cards-container .cards-section:nth-child(6) {
+  top: 400px !important; /* Tercer nivel - espaciado uniforme */
   left: 0 !important;
 }
 
-.col-md-4 .cards-container .cards-section:nth-child(3) .info-card,
-.cards-container .cards-section:nth-child(3) .info-card {
+.col-md-4 .cards-container .cards-section:nth-child(6) .info-card,
+.cards-container .cards-section:nth-child(6) .info-card {
   position: relative !important;
   margin: 0 !important;
   width: 100% !important;
   max-width: none !important;
 }
 
-/* Conectores limpios desde el borde de cada card hacia el centro */
+/* Líneas horizontales - Más largas y simétricas */
 .col-md-4 .cards-container .cards-section::after,
 .cards-container .cards-section::after {
   content: '';
   position: absolute;
-  height: 3px; /* Mismo grosor que la línea central */
+  height: 3px; /* Mismo grosor que línea vertical */
   background: linear-gradient(to right, 
-    rgba(183, 240, 158, 0.6) 0%,
-    rgba(183, 240, 158, 0.8) 100%
+    rgba(167, 203, 107, 0.7) 0%,
+    rgba(167, 203, 107, 0.9) 100%
   );
   border-radius: 1.5px;
   z-index: 2;
   opacity: 0;
-  animation: drawConnector 0.8s ease forwards;
+  animation: drawHorizontalLine 0.8s ease forwards;
   top: 50% !important;
   transform: translateY(-50%);
 }
 
-/* Conector 1: desde card izquierda hacia el centro */
-.col-md-4 .cards-container .cards-section:nth-child(1)::after,
-.cards-container .cards-section:nth-child(1)::after {
-  right: -26% !important; /* Conecta exactamente hasta la línea central */
-  width: 26% !important;
-  animation-delay: 1s;
+/* Línea 1: Desde card izquierda hacia el centro - MÁS LARGA */
+.col-md-4 .cards-container .cards-section:nth-child(4)::after,
+.cards-container .cards-section:nth-child(4)::after {
+  right: -62% !important; /* Línea ajustada para el nuevo ancho */
+  width: 62% !important;
+  animation-delay: 0.8s;
 }
 
-/* Conector 2: desde card derecha hacia el centro */
-.col-md-4 .cards-container .cards-section:nth-child(2)::after,
-.cards-container .cards-section:nth-child(2)::after {
-  left: -26% !important; /* Conecta exactamente hasta la línea central */
-  width: 26% !important;
-  animation-delay: 1.4s;
+/* Línea 2: Desde card derecha hacia el centro - MÁS LARGA */
+.col-md-4 .cards-container .cards-section:nth-child(5)::after,
+.cards-container .cards-section:nth-child(5)::after {
+  left: -62% !important; /* Línea ajustada para el nuevo ancho */
+  width: 62% !important;
+  animation-delay: 1.2s;
 }
 
-/* Conector 3: desde card izquierda hacia el centro */
-.col-md-4 .cards-container .cards-section:nth-child(3)::after,
-.cards-container .cards-section:nth-child(3)::after {
-  right: -26% !important; /* Conecta exactamente hasta la línea central */
-  width: 26% !important;
-  animation-delay: 1.8s;
+/* Línea 3: Desde card izquierda hacia el centro - MÁS LARGA */
+.col-md-4 .cards-container .cards-section:nth-child(6)::after,
+.cards-container .cards-section:nth-child(6)::after {
+  right: -62% !important; /* Línea ajustada para el nuevo ancho */
+  width: 62% !important;
+  animation-delay: 1.6s;
 }
 
-/* Animación de conectores */
-@keyframes drawConnector {
+/* Animación de líneas horizontales */
+@keyframes drawHorizontalLine {
   from {
     opacity: 0;
     transform: translateY(-50%) scaleX(0);
+    transform-origin: left;
   }
   to {
     opacity: 1;
@@ -159,103 +214,50 @@
   }
 }
 
-/* Nodos perfectamente alineados en la línea central */
-.col-md-4 .cards-container .cards-section::before,
-.cards-container .cards-section::before {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: #ffffff;
-  border: 4px solid #b7f09e;
-  border-radius: 50%;
-  box-shadow: 
-    0 0 0 2px rgba(255, 255, 255, 0.8),
-    0 4px 15px rgba(183, 240, 158, 0.4);
-  z-index: 3;
-  opacity: 0;
-  animation: popNode 0.6s ease forwards;
-  top: 50% !important;
-  transform: translateY(-50%) scale(0);
-}
-
-/* Posición exacta de nodos en la línea central */
-.col-md-4 .cards-container .cards-section:nth-child(1)::before,
-.cards-container .cards-section:nth-child(1)::before {
-  right: -38px !important; /* Exactamente en la línea central */
-  animation-delay: 1.2s;
-}
-
-.col-md-4 .cards-container .cards-section:nth-child(2)::before,
-.cards-container .cards-section:nth-child(2)::before {
-  left: -38px !important; /* Exactamente en la línea central */
-  animation-delay: 1.6s;
-}
-
-.col-md-4 .cards-container .cards-section:nth-child(3)::before,
-.cards-container .cards-section:nth-child(3)::before {
-  right: -38px !important; /* Exactamente en la línea central */
-  animation-delay: 2s;
-}
-
-/* Animación elegante de nodos */
-@keyframes popNode {
-  0% {
-    opacity: 0;
-    transform: translateY(-50%) scale(0) rotate(0deg);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translateY(-50%) scale(1.2) rotate(180deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1) rotate(360deg);
-  }
-}
-
-/* Individual Info Card - Tamaño uniforme y alineación perfecta */
+/* Individual Info Card - Tamaño uniforme y simétrico */
 .col-md-4 .cards-container .info-card,
 .cards-container .info-card {
   background: var(--text-white) !important;
-  border: 2px solid rgba(183, 240, 158, 0.3) !important;
+  border: 2px solid rgba(167, 203, 107, 0.3) !important;
   border-radius: var(--border-radius-lg) !important;
   padding: var(--spacing-lg) !important;
+  padding-top: calc(var(--spacing-lg) + 0.2rem) !important; /* Más reducido: espacio mínimo necesario */
   transition: all 0.4s ease !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
   display: flex !important;
-  align-items: center !important;
-  min-height: 110px !important; /* Altura uniforme para todas las cards */
-  max-height: 110px !important;
-  height: 110px !important;
+  align-items: flex-start !important; /* Cambio clave: alinear al inicio en lugar de centrar */
+  min-height: 120px !important; /* Altura reducida para eliminar espacio extra */
+  max-height: 140px !important; /* Altura reducida para mejor proporción */
+  height: 140px !important; /* Altura optimizada */
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUpCard 0.8s ease forwards;
   position: relative !important;
+  width: 100% !important;
 }
 
 /* Animaciones escalonadas */
-.col-md-4 .cards-container .cards-section:nth-child(1) .info-card,
-.cards-container .cards-section:nth-child(1) .info-card {
-  animation-delay: 0.3s;
+.col-md-4 .cards-container .cards-section:nth-child(4) .info-card,
+.cards-container .cards-section:nth-child(4) .info-card {
+  animation-delay: 0.2s;
 }
 
-.col-md-4 .cards-container .cards-section:nth-child(2) .info-card,
-.cards-container .cards-section:nth-child(2) .info-card {
+.col-md-4 .cards-container .cards-section:nth-child(5) .info-card,
+.cards-container .cards-section:nth-child(5) .info-card {
+  animation-delay: 0.4s;
+}
+
+.col-md-4 .cards-container .cards-section:nth-child(6) .info-card,
+.cards-container .cards-section:nth-child(6) .info-card {
   animation-delay: 0.6s;
-}
-
-.col-md-4 .cards-container .cards-section:nth-child(3) .info-card,
-.cards-container .cards-section:nth-child(3) .info-card {
-  animation-delay: 0.9s;
 }
 
 /* Hover effect mejorado */
 .col-md-4 .cards-container .info-card:hover,
 .cards-container .info-card:hover {
   transform: translateY(-8px) scale(1.02) !important;
-  border-color: rgba(183, 240, 158, 0.6) !important;
-  box-shadow: 0 15px 35px rgba(183, 240, 158, 0.25) !important;
+  border-color: rgba(167, 203, 107, 0.6) !important;
+  box-shadow: 0 15px 35px rgba(167, 203, 107, 0.25) !important;
 }
 
 /* Animación de entrada más suave */
@@ -272,31 +274,37 @@
   align-items: center;
   gap: var(--spacing-lg);
   width: 100%;
-  padding: 0.2rem 0; /* Padding vertical para mejor alineación */
+  padding: 0.2rem 0;
+  margin-top: 0.1rem; /* Mínimo margen para máximo aprovechamiento del espacio */
 }
 
-/* Iconos con mejor proporción */
+/* Iconos sobresalientes con estilo profesional */
 .card-icon {
+  position: absolute !important; /* Posicionamiento absoluto para sobresalir */
+  top: -24px !important; /* Sobresale hacia arriba */
+  left: 50% !important; /* Centrado horizontalmente */
+  transform: translateX(-50%) !important; /* Centrado perfecto */
   font-size: 1.5rem;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: var(--primary-green);
+  width: 56px !important; /* Tamaño más grande para mayor impacto */
+  height: 56px !important;
+  background: #A7CB6B;
   color: var(--text-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(43, 130, 50, 0.25);
+  box-shadow: 0 6px 20px rgba(167, 203, 107, 0.35) !important; /* Sombra más pronunciada */
   transition: all 0.4s ease;
-  border: 3px solid var(--text-white);
+  border: 4px solid var(--text-white) !important; /* Reborde blanco grueso */
+  z-index: 10 !important; /* Asegurar que esté por encima */
 }
 
 .col-md-4 .cards-container .info-card:hover .card-icon,
 .cards-container .info-card:hover .card-icon {
-  background: #b7f09e;
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 25px rgba(183, 240, 158, 0.4);
+  background: #A7CB6B;
+  transform: translateX(-50%) scale(1.1) rotate(5deg) !important; /* Mantener centrado en hover */
+  box-shadow: 0 10px 30px rgba(167, 203, 107, 0.5) !important;
+  border-width: 5px !important; /* Borde más grueso en hover */
 }
 
 .card-info {
@@ -304,11 +312,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center; /* Centrar texto para mejor balance con ícono centrado */
 }
 
 /* Tipografía optimizada */
 .card-title {
-  color: var(--primary-green);
+  color: #A7CB6B;
   font-family: 'Nexa-Heavy', sans-serif;
   font-size: 1.1rem;
   font-weight: bold;
@@ -319,11 +328,11 @@
 
 .col-md-4 .cards-container .info-card:hover .card-title,
 .cards-container .info-card:hover .card-title {
-  color: #4a7c59;
+  color: #A7CB6B;
 }
 
 .card-text {
-  color: #6c757d;
+  color: #000000;
   font-family: 'Nexa-ExtraLight', sans-serif;
   font-size: 0.95rem;
   line-height: 1.4;
@@ -338,9 +347,10 @@
     height: auto !important;
     position: relative !important;
     padding: 1rem !important;
+    max-width: 100% !important;
   }
   
-  /* En mobile: posicionamiento normal vertical con espaciado uniforme */
+  /* En mobile: layout vertical simple */
   .col-md-4 .cards-container .cards-section,
   .cards-container .cards-section {
     position: relative !important;
@@ -348,15 +358,15 @@
     top: auto !important;
     left: auto !important;
     right: auto !important;
-    margin-bottom: 2.5rem !important;
+    margin-bottom: 2rem !important;
   }
   
-  .col-md-4 .cards-container .cards-section:nth-child(1),
-  .col-md-4 .cards-container .cards-section:nth-child(2),
-  .col-md-4 .cards-container .cards-section:nth-child(3),
-  .cards-container .cards-section:nth-child(1),
-  .cards-container .cards-section:nth-child(2),
-  .cards-container .cards-section:nth-child(3) {
+  .col-md-4 .cards-container .cards-section:nth-child(4),
+  .col-md-4 .cards-container .cards-section:nth-child(5),
+  .col-md-4 .cards-container .cards-section:nth-child(6),
+  .cards-container .cards-section:nth-child(4),
+  .cards-container .cards-section:nth-child(5),
+  .cards-container .cards-section:nth-child(6) {
     position: relative !important;
     width: 100% !important;
     top: auto !important;
@@ -368,31 +378,24 @@
   .cards-container .info-card {
     width: 100% !important;
     max-width: 100% !important;
-    min-height: 90px !important;
-    max-height: 90px !important;
-    height: 90px !important;
+    min-height: 110px !important;
+    max-height: 110px !important;
+    height: 110px !important;
   }
   
-  /* Ocultar conectores en mobile */
+  /* Ocultar timeline en mobile */
   .col-md-4 .cards-container .cards-section::after,
   .cards-container .cards-section::after {
     display: none;
   }
   
-  /* Línea central simple en mobile */
   .col-md-4 .cards-container::before,
   .cards-container::before {
-    width: 2px;
-    opacity: 0.4;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    height: 100%;
+    display: none;
   }
   
-  /* Ocultar nodos en mobile */
-  .col-md-4 .cards-container .cards-section::before,
-  .cards-container .cards-section::before {
+  .col-md-4 .cards-container .timeline-node,
+  .cards-container .timeline-node {
     display: none;
   }
   
