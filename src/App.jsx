@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Chest from './components/Chest'
 import RegistrationButton from './components/RegistrationButton'
 import CheckRegistration from './components/CheckRegistration'
-import ParticlesBackground from './components/ParticlesBackground'
+import AnimatedParticles from './components/AnimatedParticles'
 
 function App() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false)
@@ -12,10 +12,7 @@ function App() {
   }
 
   return (
-    <div className="app">
-      {/* Partículas de fondo */}
-      <ParticlesBackground />
-      
+    <div className="app" id="sorteo">
       {/* Navbar */}
       <nav className="navbar">
         <div className="nav-container">
@@ -37,7 +34,8 @@ function App() {
       {/* Contenido principal */}
       <main className="main-content">
         {/* Sección del sorteo */}
-        <section className="hero-section" id="sorteo">
+        <section className="hero-section">
+          <AnimatedParticles section="hero" />
           <div className="container">
             <div className="row align-items-center d-flex flex-row">
               {/* Columnas invisibles izquierdas */}
@@ -118,6 +116,7 @@ function App() {
 
         {/* Sección de información adicional */}
         <section className="info-section" id="como-participar">
+          <AnimatedParticles section="info" />
           <div className="info-container">
             <h2>¿Cómo Participar?</h2>
             <div className="steps">
@@ -143,43 +142,10 @@ function App() {
 
       {/* Footer institucional */}
       <footer className="footer-avellaneda" id="contacto">
-        <div className="footer-emergencias">
-          <div className="footer-emergencia-item">
-            <div className="footer-emergencia-icon">+</div>
-            <div className="footer-emergencia-num">0800-333-3218</div>
-            <div className="footer-emergencia-label">Defensa Civil / Emergencia Vial</div>
-          </div>
-          <div className="footer-emergencia-item">
-            <div className="footer-emergencia-icon">👮‍♂️</div>
-            <div className="footer-emergencia-num">911</div>
-            <div className="footer-emergencia-label">Policía</div>
-          </div>
-          <div className="footer-emergencia-item">
-            <div className="footer-emergencia-icon">🚒</div>
-            <div className="footer-emergencia-num">Bomberos</div>
-            <div className="footer-emergencia-label">Listado de Cuarteles</div>
-          </div>
-          <div className="footer-emergencia-item">
-            <div className="footer-emergencia-icon">🚨</div>
-            <div className="footer-emergencia-num">144</div>
-            <div className="footer-emergencia-label">Violencia de Género</div>
-          </div>
-          <div className="footer-emergencia-item">
-            <div className="footer-emergencia-icon">📞</div>
-            <div className="footer-emergencia-num">107</div>
-            <div className="footer-emergencia-label">SAME</div>
-          </div>
-        </div>
         <div className="footer-avellaneda-main">
           <div className="footer-avellaneda-logo">
-            <img src="/logoavellaneda.png" alt="Logo Avellaneda" style={{ width: 100, height: 100, borderRadius: '50%', background: '#fff' }} />
+            <img src="/logoavellaneda.png" alt="Logo Avellaneda" style={{ width: 140, height: 140, borderRadius: '50%', background: '#fff' }} />
             <div className="footer-avellaneda-title">avellaneda</div>
-            <div className="footer-avellaneda-socials">
-              <a href="#" aria-label="Facebook">&#xf09a;</a>
-              <a href="#" aria-label="Twitter">&#xf099;</a>
-              <a href="#" aria-label="Instagram">&#xf16d;</a>
-              <a href="#" aria-label="YouTube">&#xf167;</a>
-            </div>
             <div className="footer-avellaneda-dir">
               <b>Municipalidad de Avellaneda</b><br />Güemes 835
             </div>

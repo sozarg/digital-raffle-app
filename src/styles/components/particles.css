@@ -1,119 +1,181 @@
 /* ==============================================
-   PARTICLES BACKGROUND ANIMATION
+   ANIMATED PARTICLES COMPONENT STYLES
    ============================================== */
 
-.particles-background {
-  position: fixed;
+/* Particles Container - Position absolute to not affect layout */
+.particles-container {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw; /* Usar 100vw en lugar de 100% para ser más específico */
-  height: 100vh; /* Cubrir toda la pantalla */
-  overflow: hidden;
-  z-index: 1; /* Entre el background del hero (-1) y el contenido (2) */
-  pointer-events: none;
-  /* Remover clip-path para permitir partículas en toda la pantalla */
-}
-
-.particle-container {
-  position: absolute;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-name: particle-move;
-  /* Remover transform inicial para mejor distribución */
-}
-
-.particle-circle {
-  width: 100%;
+  right: 0;
+  bottom: 0;
   height: 100%;
-  border-radius: 50%;
-  mix-blend-mode: normal; /* Cambio a normal para colores puros */
-  background-image: radial-gradient(
-    #A6CA6A,
-    #A6CA6A 30%,
-    rgba(166, 202, 106, 0.7) 70%,
-    rgba(166, 202, 106, 0) 100%
-  );
-  animation: 
-    particle-fade 4000ms infinite,
-    particle-scale 5s infinite;
-  opacity: 0.6; /* Opacidad más sutil para no interferir con el contenido */
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none; /* No interfiere con interacciones */
+  z-index: 0; /* Por debajo del contenido que tiene z-index 2 */
 }
 
-/* Animación de movimiento usando CSS custom properties */
-@keyframes particle-move {
+/* Gradient overlays to fade particles at top and bottom for hero section */
+/*
+.particles-hero::before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30vh;
+  background-image: linear-gradient(-180deg, var(--background-green) 0%, rgba(215, 253, 152, 0) 100%);
+  pointer-events: none;
+}
+
+.particles-hero::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15vh;
+  background-image: linear-gradient(0deg, var(--background-green) 0%, rgba(215, 253, 152, 0) 100%);
+  pointer-events: none;
+}
+*/
+
+/* Gradient overlays for info section */
+.particles-info::before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30vh;
+  background-image: linear-gradient(-180deg, #f8fdf5 0%, rgba(248, 253, 245, 0) 100%);
+  pointer-events: none;
+}
+
+.particles-info::after {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15vh;
+  background-image: linear-gradient(0deg, #f8fdf5 0%, rgba(248, 253, 245, 0) 100%);
+  pointer-events: none;
+}
+
+/* Squares Container */
+.particles-squares {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  align-items: flex-end;
+  z-index: 0;
+}
+
+/* Individual Particle Square */
+.particle-square {
+  animation: particle-squares 9.5s linear infinite;
+  align-self: flex-end;
+  width: 1em;
+  height: 1em;
+  transform: translateY(100%);
+  background: rgba(43, 130, 50, 0.15); /* Color uniforme más transparente */
+  opacity: 0.8;
+  z-index: 0;
+}
+
+/* Particle variations - each square has different properties but same color */
+.particle-square:nth-child(2) {
+  height: 1.5em;
+  width: 3em;
+  animation-delay: 1s;
+  animation-duration: 17s;
+  filter: blur(5px);
+  background: rgba(43, 130, 50, 0.12); /* Mismo color, más transparente */
+}
+
+.particle-square:nth-child(3) {
+  height: 2em;
+  width: 1em;
+  animation-delay: 1.5s;
+  animation-duration: 8s;
+  filter: blur(1px);
+  background: rgba(43, 130, 50, 0.18); /* Mismo color */
+}
+
+.particle-square:nth-child(4) {
+  height: 1em;
+  width: 1.5em;
+  animation-delay: 0.5s;
+  filter: blur(3px);
+  animation-duration: 13s;
+  background: rgba(43, 130, 50, 0.15); /* Mismo color */
+}
+
+.particle-square:nth-child(5) {
+  height: 1.25em;
+  width: 2em;
+  animation-delay: 4s;
+  filter: blur(2px);
+  animation-duration: 11s;
+  background: rgba(43, 130, 50, 0.14); /* Mismo color */
+}
+
+.particle-square:nth-child(6) {
+  height: 2.5em;
+  width: 2em;
+  animation-delay: 2s;
+  filter: blur(1px);
+  animation-duration: 9s;
+  background: rgba(43, 130, 50, 0.16); /* Mismo color */
+}
+
+.particle-square:nth-child(7) {
+  height: 5em;
+  width: 2em;
+  filter: blur(2.5px);
+  animation-duration: 12s;
+  background: rgba(43, 130, 50, 0.10); /* Mismo color, más transparente por ser grande */
+}
+
+.particle-square:nth-child(8) {
+  height: 1em;
+  width: 3em;
+  animation-delay: 5s;
+  filter: blur(6px);
+  animation-duration: 18s;
+  background: rgba(43, 130, 50, 0.12); /* Mismo color */
+}
+
+.particle-square:nth-child(9) {
+  height: 1.5em;
+  width: 2em;
+  filter: blur(0.5px);
+  animation-duration: 9s;
+  background: rgba(43, 130, 50, 0.17); /* Mismo color */
+}
+
+.particle-square:nth-child(10) {
+  height: 3em;
+  width: 2.4em;
+  animation-delay: 6s;
+  filter: blur(0.5px);
+  animation-duration: 12s;
+  background: rgba(43, 130, 50, 0.15); /* Mismo color */
+}
+
+/* Keyframe Animation for floating particles */
+@keyframes particle-squares {
   from {
-    transform: translate3d(var(--start-x), var(--start-y), 0);
+    transform: translateY(100%) rotate(-50deg);
   }
   to {
-    transform: translate3d(var(--end-x), var(--end-y), 0);
-  }
-}
-
-/* Animación de fade más suave */
-@keyframes particle-fade {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
-
-/* Animación de escala más sutil */
-@keyframes particle-scale {
-  0% {
-    transform: scale3d(0.4, 0.4, 1);
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-  100% {
-    transform: scale3d(0.4, 0.4, 1);
-  }
-}
-
-/* Variaciones para diferentes partículas - todas en verde institucional */
-.particle-container:nth-child(2n) .particle-circle {
-  background-image: radial-gradient(
-    #A6CA6A,
-    #A6CA6A 25%,
-    rgba(166, 202, 106, 0.5) 70%,
-    rgba(166, 202, 106, 0) 100%
-  );
-  animation-duration: 4500ms, 6s;
-}
-
-.particle-container:nth-child(3n) .particle-circle {
-  background-image: radial-gradient(
-    #A6CA6A,
-    #A6CA6A 20%,
-    rgba(166, 202, 106, 0.4) 75%,
-    rgba(166, 202, 106, 0) 100%
-  );
-  animation-duration: 5000ms, 4s;
-}
-
-.particle-container:nth-child(4n) .particle-circle {
-  background-image: radial-gradient(
-    #A6CA6A,
-    #A6CA6A 15%,
-    rgba(166, 202, 106, 0.3) 65%,
-    rgba(166, 202, 106, 0) 100%
-  );
-  animation-duration: 5500ms, 7s;
-}
-
-/* Responsive - Reducir partículas en móviles */
-@media (max-width: 768px) {
-  .particle-container:nth-child(n+51) {
-    display: none; /* Mostrar solo 50 partículas en móvil */
-  }
-  
-  .particle-circle {
-    animation-duration: 6000ms, 5s; /* Animaciones más lentas en móvil */
-    opacity: 0.4; /* Más sutil en móvil */
+    transform: translateY(calc(-100vh - 100%)) rotate(20deg);
   }
 } 

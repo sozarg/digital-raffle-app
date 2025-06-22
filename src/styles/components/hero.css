@@ -47,20 +47,20 @@
 
 /* Hero Typography */
 .hero-title {
-  font-family: 'Nexa-Heavy', sans-serif;
+  font-family: 'Coolvetica', sans-serif;
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--text-white);
-  text-shadow: 2px 3px 4px rgba(56, 77, 52, 0.8);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
   margin-bottom: var(--spacing-md);
   line-height: 1.2;
 }
 
 .hero-subtitle {
-  font-family: 'Nexa-ExtraLight', sans-serif;
+  font-family: 'Coolvetica', sans-serif;
   font-size: 1.2rem;
   color: var(--text-white);
-  text-shadow: 1px 2px 3px rgba(56, 77, 52, 0.5);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
   margin-bottom: 0; /* Remover margin para usar flex spacing */
   line-height: 1.4;
 }

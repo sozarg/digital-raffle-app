@@ -22,24 +22,28 @@
   display: inline-block;
   position: relative;
   margin: 0 auto;
-  cursor: pointer;
+  cursor: default; /* Cursor normal para el contenedor */
   overflow: visible; /* Permitir efectos mágicos */
 }
 
 .chest-lottie-container.static {
-  cursor: default;
+  cursor: default; /* Cursor normal para el contenedor estático */
 }
 
 /* Optimización del Lottie del cofre para reducir espacio vacío */
 .chest-lottie-container > div {
   transform: scale(1.4) translate(-5%, -8%);
   transform-origin: center center;
+  /* Animación sutil de respiro aplicada al elemento interno */
+  animation: chestBreathing 6s ease-in-out infinite;
 }
 
 /* Para el cofre estático, aplicar la misma optimización */
 .chest-lottie-container.static > div {
   transform: scale(1.4) translate(-5%, -8%);
   transform-origin: center center;
+  /* El cofre estático también respira */
+  animation: chestBreathing 6s ease-in-out infinite;
 }
 
 /* ===============================================
@@ -72,7 +76,7 @@
 }
 
 /* Contenedor para más partículas usando elementos virtuales */
-.chest-main-container::before {
+.chest-main-container::after {
   content: '✨ ⭐ ✨';
   position: absolute;
   top: 60%;
@@ -86,7 +90,8 @@
   z-index: 10;
 }
 
-.chest-main-container::after {
+/* Partícula adicional usando hover para crear más efectos */
+.chest-lottie-container:hover ~ .magic-extra-particle {
   content: '🌟';
   position: absolute;
   top: 75%;
@@ -215,4 +220,53 @@
 /* Chest Shake Animation */
 .chest-shake {
   animation: chest-shake-anim 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Animación de respiro sutil para el cofre */
+@keyframes chestBreathing {
+  0% {
+    transform: scale(1.4) translate(-5%, -8%);
+  }
+  50% {
+    transform: scale(1.425) translate(-5%, -9.5%);
+  }
+  100% {
+    transform: scale(1.4) translate(-5%, -8%);
+  }
+}
+
+/* Flecha indicadora encima del cofre */
+.chest-main-container::before {
+  content: '';
+  position: absolute;
+  top: 110px;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid #A7F924;
+  z-index: 15;
+  pointer-events: none;
+  /* Animación bounce suave */
+  animation: arrowBounce 2s ease-in-out infinite;
+  /* Contorno oscuro mejorado */
+  filter: 
+    drop-shadow(0 0 3px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 1px rgba(0, 0, 0, 1));
+}
+
+/* Animación bounce suave para la flecha */
+@keyframes arrowBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-6px);
+  }
 } 

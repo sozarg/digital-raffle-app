@@ -10,6 +10,7 @@
   --secondary-green: #A6CA6A;
   --light-green: #8FBC8F;
   --background-green: #d7fd98;
+  --new-green: #D2F793;
   
   /* Colores de texto */
   --text-primary: #222;
@@ -92,6 +93,8 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden; /* Prevenir scroll horizontal */
+  position: relative;
+  z-index: 0;
 }
 
 /* Utilidades comunes */

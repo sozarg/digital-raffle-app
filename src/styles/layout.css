@@ -10,7 +10,7 @@
   box-shadow: none;
   border: none;
   padding: 0;
-  padding-top: 120px;
+  padding-top: 60px;
   overflow-x: hidden;
 }
 
@@ -59,9 +59,12 @@
   background: radial-gradient(circle, var(--background-green) 0%, var(--secondary-green) 60%, transparent 100%);
   position: relative;
   overflow: hidden;
-  padding: var(--spacing-xxl) 0;
+  padding: var(--spacing-xl) 0 var(--spacing-xxl) 0;
   width: 100%;
   max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .hero-section::before {
@@ -93,9 +96,7 @@
   align-items: center;
 }
 
-.hero-section .col-md-2 {
-  /* Columnas invisibles para espaciado */
-}
+/* Columnas invisibles para espaciado - sin regla CSS porque no necesitan estilos */
 
 /* Columna izquierda (cofre) - margin derecho para acercarse al centro */
 .hero-section .col-md-5:first-of-type {
@@ -109,13 +110,31 @@
 
 /* Info Section Layout */
 .info-section {
-  padding: 4rem var(--spacing-xl);
-  background: linear-gradient(135deg, 
-    rgba(166, 202, 106, 0.15) 0%, 
-    rgba(215, 253, 152, 0.25) 30%, 
-    rgba(166, 202, 106, 0.12) 70%, 
-    rgba(143, 188, 143, 0.18) 100%
-  );
+  padding: var(--spacing-xl) 0 var(--spacing-xxl) 0;
+  background: #f8fdf5;
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+.info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f8fdf5;
+  z-index: -1;
+}
+
+/* Asegurar que todo el contenido de info-section esté por encima de las partículas */
+.info-section > * {
   position: relative;
   z-index: 2;
 }
@@ -125,61 +144,79 @@
   margin: 0 auto;
   text-align: center;
   position: relative;
-  z-index: 2;
+  width: 100%;
+  padding: 0 var(--spacing-xl);
+  z-index: 2; /* Asegurar que esté por encima de las partículas */
 }
 
 .info-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: var(--spacing-xxl);
-  color: #333;
-  font-family: 'Nexa-Heavy', sans-serif;
+  font-size: 4rem;
+  margin-bottom: calc(var(--spacing-xxl) + 7rem);
+  margin-top: -10rem;
+  color: #A6CA6A;
+  font-family: 'Coolvetica', sans-serif;
+  -webkit-text-stroke: 0.8px #000;
+  text-shadow: none;
 }
 
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xxl);
+  gap: calc(var(--spacing-xxl) * 1.5) calc(var(--spacing-xxl) * 2);
   margin-top: var(--spacing-xl);
+  position: relative;
 }
 
 .step {
-  background: var(--text-white);
-  padding: var(--spacing-xl);
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  transition: transform var(--transition-normal);
+  background: var(--secondary-green);
+  padding: calc(var(--spacing-xl) + 1rem) var(--spacing-xl) var(--spacing-lg) var(--spacing-xl);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(166, 202, 106, 0.3);
+  backdrop-filter: none;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   position: relative;
-  z-index: 3;
+  border: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .step:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(166, 202, 106, 0.4);
 }
 
 .step-number {
-  width: 60px;
-  height: 60px;
-  background: var(--primary-green);
-  color: var(--text-white);
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  background: var(--text-white);
+  color: var(--secondary-green);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0 auto var(--spacing-md);
-  border: 2px solid var(--primary-light-green);
+  font-weight: 900;
+  font-family: 'Nexa-Heavy', sans-serif;
+  border: 2px solid var(--secondary-green);
+  box-shadow: 0 4px 12px rgba(166, 202, 106, 0.3);
 }
 
 .step h3 {
   font-size: 1.3rem;
-  margin-bottom: var(--spacing-md);
-  color: #333;
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  color: var(--text-white);
   font-family: 'Nexa-Heavy', sans-serif;
 }
 
 .step p {
-  color: var(--text-secondary);
+  color: #000;
   line-height: 1.6;
   font-family: 'Nexa-ExtraLight', sans-serif;
+  opacity: 0.95;
+  margin: 0;
 } 
