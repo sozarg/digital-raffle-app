@@ -1,0 +1,931 @@
+/* ==============================================
+   ADMIN PANEL STYLES
+   Custom colors and fonts for admin interface
+   ============================================== */
+
+/* Admin color variables */
+:root {
+  --admin-primary: #A7CB6B;
+  --admin-secondary: #F9FDF5;
+  --admin-primary-dark: #8FB657;
+  --admin-primary-light: #B8D87C;
+  --admin-text-primary: #2D5016;
+  --admin-text-secondary: #5A7A3D;
+  --admin-white: #FFFFFF;
+  --admin-black: #000000;
+  --admin-success: #7FB069;
+  --admin-warning: #FFC857;
+  --admin-danger: #E63946;
+  --admin-info: #6B9DC8;
+}
+
+/* Admin page container */
+.admin-container {
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+  background-color: var(--admin-secondary) !important;
+  min-height: 100vh;
+}
+
+/* Admin headings use heavy font */
+.admin-container h1,
+.admin-container h2,
+.admin-container h3,
+.admin-container h4,
+.admin-container h5,
+.admin-container h6,
+.admin-container .navbar-brand,
+.admin-container .card-title,
+.admin-container .btn {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+}
+
+/* Override Bootstrap primary color for admin */
+.admin-container .btn-primary {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.admin-container .btn-primary:hover {
+  background-color: var(--admin-primary-dark) !important;
+  border-color: var(--admin-primary-dark) !important;
+  transform: translateY(-1px) !important;
+  transition: all 0.2s ease !important;
+}
+
+.admin-container .btn-primary:focus,
+.admin-container .btn-primary:active {
+  background-color: var(--admin-primary-dark) !important;
+  border-color: var(--admin-primary-dark) !important;
+  box-shadow: 0 0 0 0.2rem rgba(167, 203, 107, 0.25) !important;
+}
+
+.admin-container .btn-primary:disabled {
+  background-color: var(--admin-primary-light) !important;
+  border-color: var(--admin-primary-light) !important;
+  opacity: 0.6 !important;
+}
+
+/* Success button */
+.admin-container .btn-success {
+  background-color: var(--admin-primary-dark) !important;
+  border-color: var(--admin-primary-dark) !important;
+  color: var(--admin-white) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+}
+
+.admin-container .btn-success:hover {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+}
+
+/* Secondary button */
+.admin-container .btn-outline-secondary {
+  border-color: var(--admin-primary) !important;
+  color: var(--admin-primary) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+}
+
+.admin-container .btn-outline-secondary:hover {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+}
+
+/* Navbar styling */
+.admin-container .navbar-dark.bg-primary {
+  background-color: var(--admin-primary) !important;
+  border-bottom: 3px solid var(--admin-primary-dark) !important;
+}
+
+.admin-container .navbar-brand {
+  color: var(--admin-white) !important;
+  font-size: 1.5rem !important;
+}
+
+.admin-container .btn-outline-light {
+  border-color: var(--admin-white) !important;
+  color: var(--admin-white) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.admin-container .btn-outline-light:hover {
+  background-color: var(--admin-white) !important;
+  color: var(--admin-primary) !important;
+}
+
+/* Nav tabs */
+.admin-container .nav-tabs {
+  border-bottom: 2px solid var(--admin-primary-light) !important;
+}
+
+.admin-container .nav-tabs .nav-link {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  color: var(--admin-text-secondary) !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  margin-right: 8px !important;
+  border-radius: 8px 8px 0 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.admin-container .nav-tabs .nav-link.active {
+  background-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+  border-bottom: 3px solid var(--admin-primary-dark) !important;
+}
+
+.admin-container .nav-tabs .nav-link:hover {
+  color: var(--admin-primary) !important;
+  background-color: rgba(167, 203, 107, 0.1) !important;
+}
+
+/* Cards */
+.admin-container .card {
+  border: 2px solid rgba(167, 203, 107, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(167, 203, 107, 0.15) !important;
+  background-color: var(--admin-white) !important;
+}
+
+.admin-container .card-header {
+  background-color: var(--admin-primary) !important;
+  border-bottom: 2px solid var(--admin-primary-dark) !important;
+  color: var(--admin-white) !important;
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1rem 1.5rem !important;
+}
+
+.admin-container .card-header .card-title {
+  color: var(--admin-white) !important;
+  margin-bottom: 0 !important;
+  font-size: 1.25rem !important;
+}
+
+.admin-container .card-body {
+  padding: 1.5rem !important;
+}
+
+/* Statistics cards */
+.admin-container .card.bg-primary {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary-dark) !important;
+  color: var(--admin-white) !important;
+}
+
+.admin-container .card.bg-success {
+  background-color: var(--admin-primary-dark) !important;
+  border-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+}
+
+/* Tables */
+.admin-container .table-dark {
+  background-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+}
+
+.admin-container .table-dark th {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  border-color: var(--admin-primary-dark) !important;
+  background-color: var(--admin-primary-dark) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 0.9rem !important;
+}
+
+.admin-container .table-success {
+  background-color: var(--admin-primary-dark) !important;
+  color: var(--admin-white) !important;
+}
+
+.admin-container .table-success th {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary-dark) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.admin-container .table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: rgba(167, 203, 107, 0.1) !important;
+}
+
+.admin-container .table-hover > tbody > tr:hover > td {
+  background-color: rgba(167, 203, 107, 0.2) !important;
+}
+
+.admin-container .table-bordered {
+  border: 2px solid var(--admin-primary-light) !important;
+}
+
+.admin-container .table-bordered th,
+.admin-container .table-bordered td {
+  border: 1px solid var(--admin-primary-light) !important;
+}
+
+/* Badges */
+.admin-container .badge {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.admin-container .badge.bg-info {
+  background-color: var(--admin-info) !important;
+  color: var(--admin-white) !important;
+}
+
+.admin-container .badge.bg-success {
+  background-color: var(--admin-primary-dark) !important;
+  color: var(--admin-white) !important;
+}
+
+.admin-container .badge.bg-warning {
+  background-color: var(--admin-primary-light) !important;
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-container .badge.bg-danger {
+  background-color: var(--admin-danger) !important;
+  color: var(--admin-white) !important;
+}
+
+/* Pagination */
+.admin-container .pagination {
+  margin-bottom: 0 !important;
+}
+
+.admin-container .page-link {
+  color: var(--admin-primary) !important;
+  background-color: var(--admin-white) !important;
+  border: 1px solid var(--admin-primary-light) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  padding: 8px 16px !important;
+}
+
+.admin-container .page-link:hover {
+  color: var(--admin-white) !important;
+  background-color: var(--admin-primary-light) !important;
+  border-color: var(--admin-primary-light) !important;
+}
+
+.admin-container .page-link:focus {
+  box-shadow: 0 0 0 0.2rem rgba(167, 203, 107, 0.25) !important;
+}
+
+.admin-container .page-item.active .page-link {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+}
+
+.admin-container .page-item.disabled .page-link {
+  color: var(--admin-text-secondary) !important;
+  background-color: var(--admin-secondary) !important;
+  border-color: var(--admin-primary-light) !important;
+}
+
+/* Form controls */
+.admin-container .form-control {
+  border: 2px solid rgba(167, 203, 107, 0.3) !important;
+  border-radius: 8px !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+  padding: 12px 16px !important;
+  background-color: var(--admin-white) !important;
+}
+
+.admin-container .form-control:focus {
+  border-color: var(--admin-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(167, 203, 107, 0.25) !important;
+  background-color: var(--admin-white) !important;
+}
+
+.admin-container .form-label {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  color: var(--admin-text-primary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 8px !important;
+}
+
+.admin-container .form-text {
+  color: var(--admin-text-secondary) !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+}
+
+/* Alerts */
+.admin-container .alert {
+  border-radius: 8px !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+}
+
+.admin-container .alert-danger {
+  background-color: rgba(230, 57, 70, 0.1) !important;
+  border: 2px solid var(--admin-danger) !important;
+  color: var(--admin-danger) !important;
+}
+
+.admin-container .alert-info {
+  background-color: rgba(167, 203, 107, 0.1) !important;
+  border: 2px solid var(--admin-primary) !important;
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-container .alert-success {
+  background-color: rgba(167, 203, 107, 0.15) !important;
+  border: 2px solid var(--admin-primary-dark) !important;
+  color: var(--admin-text-primary) !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+}
+
+/* Login page specific */
+.admin-login-container {
+  background: linear-gradient(135deg, var(--admin-secondary) 0%, rgba(167, 203, 107, 0.1) 100%) !important;
+}
+
+.admin-login-container .card {
+  border: 2px solid var(--admin-primary-light) !important;
+  box-shadow: 0 8px 25px rgba(167, 203, 107, 0.2) !important;
+  background-color: var(--admin-white) !important;
+}
+
+/* Estilos específicos para la página de login */
+.admin-login-container .card-title {
+  color: var(--admin-primary) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 1.5rem !important;
+}
+
+.admin-login-container .text-muted {
+  color: var(--admin-text-secondary) !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+  font-size: 1rem !important;
+}
+
+.admin-login-container .form-label {
+  color: var(--admin-primary) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 1rem !important;
+  margin-bottom: 8px !important;
+}
+
+.admin-login-container .form-control {
+  border: 2px solid var(--admin-primary-light) !important;
+  border-radius: 8px !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+  padding: 12px 16px !important;
+  background-color: var(--admin-white) !important;
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-login-container .form-control:focus {
+  border-color: var(--admin-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(167, 203, 107, 0.25) !important;
+  background-color: var(--admin-white) !important;
+}
+
+.admin-login-container .btn-primary {
+  background-color: var(--admin-primary) !important;
+  border-color: var(--admin-primary) !important;
+  color: var(--admin-white) !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  padding: 15px 24px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 1.1rem !important;
+}
+
+.admin-login-container .btn-primary:hover {
+  background-color: var(--admin-primary-dark) !important;
+  border-color: var(--admin-primary-dark) !important;
+  transform: translateY(-2px) !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(167, 203, 107, 0.3) !important;
+}
+
+.admin-login-container .alert-danger {
+  background-color: rgba(230, 57, 70, 0.1) !important;
+  border: 2px solid var(--admin-danger) !important;
+  color: var(--admin-danger) !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+}
+
+.admin-login-container small.text-muted {
+  color: var(--admin-text-secondary) !important;
+  font-family: 'Nexa-ExtraLight', sans-serif !important;
+  font-style: italic !important;
+}
+
+/* Text colors */
+.admin-container .text-success {
+  color: var(--admin-primary-dark) !important;
+}
+
+.admin-container .text-danger {
+  color: var(--admin-danger) !important;
+}
+
+.admin-container .text-muted {
+  color: var(--admin-text-secondary) !important;
+}
+
+.admin-container .fw-bold {
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+}
+
+/* Spinners */
+.admin-container .spinner-border {
+  color: var(--admin-white) !important;
+}
+
+/* Icons */
+.admin-container .bi {
+  color: inherit !important;
+}
+
+/* Text alignments and utilities */
+.admin-container .text-center h5 {
+  color: var(--admin-text-primary) !important;
+}
+
+.admin-container .display-1 {
+  color: var(--admin-primary-light) !important;
+}
+
+/* Custom scrollbar for admin */
+.admin-container ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.admin-container ::-webkit-scrollbar-track {
+  background: var(--admin-secondary);
+}
+
+.admin-container ::-webkit-scrollbar-thumb {
+  background: var(--admin-primary);
+  border-radius: 4px;
+}
+
+.admin-container ::-webkit-scrollbar-thumb:hover {
+  background: var(--admin-primary-dark);
+}
+
+/* ===================================================
+   MOBILE RESPONSIVE IMPROVEMENTS
+   ================================================== */
+
+/* Tablets and small laptops */
+@media (max-width: 992px) {
+  .admin-container .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .admin-container .card-body {
+    padding: 1.25rem !important;
+  }
+  
+  .admin-container .nav-tabs .nav-link {
+    padding: 10px 16px !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  /* Container adjustments */
+  .admin-container .container-fluid {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  /* Add spacing between main sections */
+  .admin-container .tab-content {
+    padding-top: 1rem !important;
+  }
+  
+  /* Cards spacing */
+  .admin-container .card {
+    margin-bottom: 1.5rem !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Specific spacing for raffle section columns */
+  .admin-container .row > .col-lg-4,
+  .admin-container .row > .col-lg-8 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Extra spacing after statistics */
+  .admin-container .row.mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Navbar mobile */
+  .admin-container .navbar {
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .navbar-brand {
+    font-size: 1.1rem !important;
+  }
+  
+  .admin-container .btn-outline-light {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Tabs mobile */
+  .admin-container .nav-tabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-bottom: 1px solid var(--admin-primary-light) !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .nav-tabs .nav-link {
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+    margin-right: 4px !important;
+    white-space: nowrap !important;
+    min-width: fit-content !important;
+  }
+  
+  .admin-container .card-header {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .admin-container .card-header .card-title {
+    font-size: 1rem !important;
+  }
+  
+  .admin-container .card-body {
+    padding: 1rem !important;
+  }
+  
+  /* Buttons mobile */
+  .admin-container .btn {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .admin-container .btn-lg {
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Statistics mobile */
+  .admin-container .row.mb-4 .col-md-6 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .row.mb-4 .d-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding: 0.75rem !important;
+    background-color: rgba(167, 203, 107, 0.05) !important;
+    border-radius: 8px !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .admin-container .row.mb-4 span[style*="font-size: 1.2rem"] {
+    font-size: 1rem !important;
+  }
+  
+  .admin-container .row.mb-4 span[style*="font-size: 2.5rem"] {
+    font-size: 1.8rem !important;
+    margin-top: 0.25rem !important;
+  }
+  
+  /* Tables mobile - Now hidden on mobile, using cards instead */
+  .admin-container .table-responsive {
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  }
+  
+  /* Keep table normal for desktop view */
+  .admin-container .table {
+    margin-bottom: 0 !important;
+  }
+  
+  .admin-container .table th,
+  .admin-container .table td {
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .admin-container .table th {
+    font-size: 0.75rem !important;
+  }
+  
+  .admin-container .badge {
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Pagination mobile */
+  .admin-container .pagination {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .page-link {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+    margin: 2px !important;
+  }
+  
+  .admin-container .pagination .page-item:first-child .page-link,
+  .admin-container .pagination .page-item:last-child .page-link {
+    padding: 6px 8px !important;
+  }
+  
+  /* Hide page numbers on very small screens, keep only prev/next */
+  .admin-container .pagination .page-item:not(:first-child):not(:last-child) {
+    display: none !important;
+  }
+  
+  /* Show current page */
+  .admin-container .pagination .page-item.active {
+    display: inline-block !important;
+  }
+  
+  /* Pagination info mobile */
+  .admin-container .d-flex.justify-content-between {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .d-flex.justify-content-between > div:first-child {
+    order: 2 !important;
+  }
+  
+  .admin-container .d-flex.justify-content-between > nav {
+    order: 1 !important;
+  }
+  
+  /* Forms mobile */
+  .admin-container .form-control {
+    padding: 10px 12px !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .admin-container .form-label {
+    font-size: 0.8rem !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .admin-container .form-text {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .admin-container .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Alerts mobile */
+  .admin-container .alert {
+    padding: 0.75rem !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Winners table mobile */
+  .admin-container .table-responsive .table.table-bordered {
+    min-width: 500px !important;
+  }
+  
+  /* Action buttons mobile */
+  .admin-container .d-flex.justify-content-end {
+    justify-content: center !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .card-header .d-flex.justify-content-between {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .admin-container .card-header .btn {
+    align-self: stretch !important;
+  }
+  
+  /* Specific spacing for raffle configuration form */
+  .admin-container .d-grid.gap-2 {
+    gap: 0.75rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  /* Add breathing room around sections */
+  .admin-container .row {
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .col-lg-4,
+  .admin-container .col-lg-8 {
+    padding-bottom: 1rem !important;
+  }
+  
+  /* Mobile Participant Cards */
+  .admin-container .participant-card,
+  .admin-container .winner-card {
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-container .participant-card:last-child,
+  .admin-container .winner-card:last-child {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 576px) {
+  .admin-container .container-fluid {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  
+  .admin-container .card-body {
+    padding: 0.75rem !important;
+  }
+  
+  .admin-container .nav-tabs .nav-link {
+    padding: 6px 8px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .admin-container .table th,
+  .admin-container .table td {
+    padding: 0.25rem !important;
+    font-size: 0.7rem !important;
+  }
+  
+  .admin-container .badge {
+    font-size: 0.6rem !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+  
+  .admin-container .btn {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .admin-container .row.mb-4 span[style*="font-size: 1rem"] {
+    font-size: 0.9rem !important;
+  }
+  
+  .admin-container .row.mb-4 span[style*="font-size: 1.8rem"] {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Login page mobile */
+  .admin-login-container .card-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .admin-login-container .btn-primary {
+    font-size: 0.9rem !important;
+    padding: 10px 16px !important;
+  }
+  
+  .admin-login-container .col-md-6.col-lg-4 {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
+
+/* Mobile Participant Cards */
+.admin-container .participant-card {
+  border: 2px solid rgba(167, 203, 107, 0.3) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px rgba(167, 203, 107, 0.15) !important;
+  background-color: var(--admin-white) !important;
+  transition: all 0.2s ease !important;
+  margin-bottom: 1rem !important;
+}
+
+.admin-container .participant-card:hover {
+  border-color: var(--admin-primary) !important;
+  box-shadow: 0 4px 12px rgba(167, 203, 107, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+.admin-container .participant-card .card-body {
+  padding: 1rem !important;
+}
+
+.admin-container .participant-card .card-title {
+  color: var(--admin-text-primary) !important;
+  font-size: 1rem !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.admin-container .participant-card .text-muted {
+  font-size: 0.75rem !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.admin-container .participant-card .border-top {
+  border-color: rgba(167, 203, 107, 0.3) !important;
+  margin-top: 0.75rem !important;
+  padding-top: 0.75rem !important;
+}
+
+.admin-container .participant-card .row.g-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Mobile Winner Cards */
+.admin-container .winner-card {
+  border: 2px solid rgba(167, 203, 107, 0.4) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 3px 10px rgba(167, 203, 107, 0.2) !important;
+  background: linear-gradient(135deg, var(--admin-white) 0%, rgba(167, 203, 107, 0.05) 100%) !important;
+  transition: all 0.2s ease !important;
+  margin-bottom: 1rem !important;
+}
+
+.admin-container .winner-card:hover {
+  border-color: var(--admin-primary-dark) !important;
+  box-shadow: 0 5px 15px rgba(167, 203, 107, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.admin-container .winner-card .card-body {
+  padding: 1.25rem !important;
+}
+
+.admin-container .winner-card .card-title {
+  color: var(--admin-text-primary) !important;
+  font-size: 1.1rem !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.admin-container .winner-card .text-muted {
+  font-size: 0.75rem !important;
+  font-family: 'Nexa-Heavy', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 0.75rem !important;
+  color: var(--admin-primary) !important;
+}
+
+.admin-container .winner-card .row.g-2 {
+  margin-top: 0.5rem !important;
+} 

@@ -25,6 +25,9 @@
 /* Responsive Design */
 @import './styles/responsive.css';
 
+/* Admin Panel Styles */
+@import './styles/admin.css';
+
 /* ==============================================
    QUICK REFERENCE GUIDE:
    
@@ -39,6 +42,7 @@
    🦶 Footer: styles/components/footer.css
    ✨ Animations: styles/animations.css
    📱 Responsive: styles/responsive.css
+   🔧 Admin Panel: styles/admin.css
    
    QUICK EDIT TIPS:
    - Want to change colors? → Edit styles/base.css (CSS variables)
@@ -46,4 +50,5 @@
    - Mobile issues? → Edit styles/responsive.css
    - Chest positioning? → Edit styles/components/chest.css
    - Card styling? → Edit styles/components/cards.css
+   - Admin panel styling? → Edit styles/admin.css
    ============================================== */ 
