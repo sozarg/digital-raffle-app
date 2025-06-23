@@ -6,7 +6,8 @@ const RegistrationForm = ({
   mode = 'button', // 'button' o 'chest'
   onClose,
   onSuccess,
-  initialDni = '' // Para pre-cargar el DNI si viene de la consulta
+  initialDni = '', // Para pre-cargar el DNI si viene de la consulta
+  fromChest = false // Nueva prop para animación desde el cofre
 }) => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -116,8 +117,8 @@ const RegistrationForm = ({
   if (showSuccess || existingRegistration) {
     const registration = existingRegistration || formData;
     return (
-      <div className="modal-overlay">
-        <div className="registration-modal">
+      <div className={`modal-overlay ${fromChest ? 'from-chest' : ''}`}>
+        <div className={`registration-modal ${fromChest ? 'from-chest-animation' : ''}`}>
           <button className="close-button" onClick={onClose}>×</button>
           <div className="registration-success">
             <div className="success-icon">✓</div>
@@ -144,8 +145,8 @@ const RegistrationForm = ({
   }
 
   return (
-    <div className="modal-overlay">
-      <div className="registration-modal">
+    <div className={`modal-overlay ${fromChest ? 'from-chest' : ''}`}>
+      <div className={`registration-modal ${fromChest ? 'from-chest-animation' : ''}`}>
         <button className="close-button" onClick={onClose}>×</button>
         
         <form onSubmit={handleSubmit} className="registration-form">

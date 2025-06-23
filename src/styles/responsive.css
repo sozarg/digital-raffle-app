@@ -46,12 +46,20 @@
   
   /* Typography */
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    padding: 0 var(--spacing-md);
+    text-align: center;
+    transform: translateY(140px);
   }
   
   .hero-subtitle {
-    font-size: 1rem;
     margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+    line-height: 1.3;
+    padding: 0 var(--spacing-md);
+    text-align: center;
+    transform: translateY(140px);
   }
   
   .chest-wrapper {
@@ -96,41 +104,70 @@
 @media (max-width: 768px) {
   /* Main Layout */
   .main-content {
-    padding-top: 100px;
+    padding-top: 10px;
+    background: var(--gradient-green);
   }
   
   /* Navigation */
   .nav-container {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
   /* Logo en móvil */
   .nav-logo {
-    margin-right: 0; /* Sin margin extra en móvil */
-    margin-bottom: var(--spacing-sm);
+    margin-right: 0;
+    margin-bottom: var(--spacing-xs);
   }
 
   .nav-logo img {
-    height: 35px;
+    height: 28px;
   }
 
   .nav-links {
     gap: var(--spacing-md);
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
   }
 
-  .nav-links .register-button,
+  /* Ordenar elementos del nav en móvil */
+  .nav-links a:not(.register-button):not(.nav-check-button) {
+    order: 1;
+    flex-basis: auto;
+    margin: var(--spacing-xs) var(--spacing-md);
+  }
+
+  .nav-links .register-button {
+    order: 3;
+    margin: var(--spacing-xs);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    flex-basis: 45%;
+  }
+
   .nav-links .nav-check-button {
-    margin: var(--spacing-sm);
+    order: 2;
+    margin: var(--spacing-xs);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    flex-basis: 45%;
+  }
+
+  /* Forzar salto de línea antes de los botones */
+  .nav-links .nav-check-button::before {
+    content: "";
+    width: 100%;
+    order: 1.5;
   }
   
   /* Hero Section */
   .hero-section {
     padding: var(--spacing-xl) 0;
-    padding-top: var(--spacing-md);
+    padding-top: var(--spacing-xxl);
+    margin-top: 0;
+    transform: none;
   }
   
   /* Cards */
@@ -141,7 +178,7 @@
   
   .info-card {
     padding: var(--spacing-md);
-    flex: none; /* En móvil no expandir */
+    flex: none;
   }
   
   .card-icon {
@@ -161,22 +198,36 @@
     flex: none;
   }
   
-  /* Resetear transforms en móvil completamente */
+  /* Posicionamiento específico para móvil - chest y flecha más a la derecha */
   .chest-section {
-    transform: none;
+    transform: translateX(40px);
   }
   
   .chest-main-container {
-    transform: none;
+    transform: translateY(-20px) translateX(95px);
+  }
+  
+  /* Mover la flecha más a la izquierda en móvil */
+  .chest-main-container::before {
+    left: 20%;
   }
   
   /* Typography */
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    padding: 0 var(--spacing-md);
+    text-align: center;
+    transform: translateY(120px);
   }
   
   .hero-subtitle {
     margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+    line-height: 1.3;
+    padding: 0 var(--spacing-md);
+    text-align: center;
+    transform: translateY(120px);
   }
   
   /* Buttons */
@@ -193,6 +244,20 @@
 
 /* Small Mobile Breakpoint - 480px and below */
 @media (max-width: 480px) {
+  /* Posicionamiento del cofre y flecha para móviles pequeños */
+  .chest-section {
+    transform: translateX(30px);
+  }
+  
+  .chest-main-container {
+    transform: translateY(-15px) translateX(70px);
+  }
+
+  /* Mover la flecha más a la izquierda en móviles pequeños */
+  .chest-main-container::before {
+    left: 30%;
+  }
+
   /* DNI Lookup Modal */
   .dni-lookup-modal {
     width: 95%;

@@ -61,12 +61,15 @@
   padding: 0.8rem var(--spacing-lg);
   border-radius: var(--border-radius);
   font-weight: 600;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all var(--transition-fast);
   font-size: 1rem;
   margin-top: var(--spacing-md);
   box-shadow: 0 2px 8px rgba(43, 130, 50, 0.2);
   font-family: 'Nexa-ExtraLight', sans-serif;
+  z-index: 20; /* Asegurar que esté por encima */
+  position: relative;
+  pointer-events: auto !important;
 }
 
 .chest-action-btn:hover {

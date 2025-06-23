@@ -53,7 +53,7 @@ function HomePage() {
                   {/* Sección del cofre - alineada con la segunda card */}
                   <div className="chest-section">
                     <div className="chest-wrapper">
-                      <Chest size={500} staticChest />
+                      <Chest size={500} staticChest={false} />
                     </div>
                   </div>
                 </div>

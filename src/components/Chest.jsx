@@ -1,65 +1,63 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import Lottie from "lottie-react";
 import chestAnimation from "../assets/optimized-chest.json";
 import RegistrationForm from "./RegistrationForm";
-import { findRegistrationByDNI, saveRegistration } from "../services/registrationService";
-
-function randomInt(a, b) {
-  return Math.floor(Math.random() * (b - a + 1)) + a;
-}
 
 const Chest = ({ size = 250, staticChest = false }) => {
   const lottieRef = useRef();
-  const [isOpen, setIsOpen] = useState(false);
-  const [ticket, setTicket] = useState(null);
-  const [showAnim, setShowAnim] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [existingTicket, setExistingTicket] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [isChestOpen, setIsChestOpen] = useState(false);
 
   const handleChestClick = () => {
-    if (isOpen || staticChest) return;
-    setShowForm(true);
-  };
-
-  const handleFormSubmit = async (formData) => {
-    // Verificar si ya existe un registro con ese DNI
-    const existing = findRegistrationByDNI(formData.dni);
-    if (existing) {
-      setExistingTicket(existing.ticketNumber);
-      return;
+    if (staticChest || isChestOpen) return;
+    
+    // Abrir el cofre
+    setIsChestOpen(true);
+    // Reproducir animación de apertura
+    if (lottieRef.current) {
+      lottieRef.current.setDirection(1); // Dirección normal
+      lottieRef.current.setSpeed(1); // Velocidad normal
+      lottieRef.current.play();
     }
-
-    // Guardar el registro y obtener el número de ticket
-    const registration = saveRegistration(formData);
     
-    // Cerrar el formulario
-    setShowForm(false);
-    
-    // Animar el cofre y mostrar el número
-    setIsOpen(true);
-    lottieRef.current.play();
-    
-    // Mostrar el número con animación
-    setTicket(registration.ticketNumber);
-    setShowAnim(false);
-    setTimeout(() => setShowAnim(true), 500);
-    setTimeout(() => setIsOpen(false), 2000);
+    // Mostrar el modal (exactamente igual que el nav)
+    setShowModal(true);
   };
 
-  const handleFormClose = () => {
-    setShowForm(false);
-    setExistingTicket(null);
+  const closeChest = () => {
+    // Cerrar el cofre con animación en reversa
+    setIsChestOpen(false);
+    if (lottieRef.current) {
+      lottieRef.current.setDirection(-1); // Dirección reversa
+      lottieRef.current.setSpeed(1); // Velocidad normal
+      lottieRef.current.play();
+    }
   };
 
-  // Posición inicial (cerradura) y final (arriba a la derecha del cofre)
-  const startTop = staticChest ? size * 0.68 - 20 : size * 0.68;
-  const startLeft = staticChest ? (size / 2) - 8 : size / 2;
-  const endTop = staticChest ? size * 0.13 - 20 : size * 0.13;
-  const endLeft = staticChest ? (size * 0.92) - 8 : size * 0.92;
+  const handleCloseModal = () => {
+    setShowModal(false);
+    // Cerrar el cofre con animación cuando se cierra el modal
+    setTimeout(() => {
+      closeChest();
+    }, 100); // Pequeño delay para que se vea la transición del modal
+  };
+
+  const handleRegistrationSuccess = (registration) => {
+    // El formulario manejará la visualización del éxito
+    // y se cerrará automáticamente después (igual que el nav)
+    setTimeout(() => {
+      setShowModal(false);
+      // Cerrar el cofre también con animación
+      setTimeout(() => {
+        closeChest();
+      }, 100);
+    }, 3000);
+  };
 
   return (
     <>
-      {/* Contenedor del cofre - SIN estilos hardcodeados */}
+      {/* Contenedor del cofre */}
       <div className="chest-main-container">
         
         {/* Aura detrás del cofre */}
@@ -73,30 +71,16 @@ const Chest = ({ size = 250, staticChest = false }) => {
           }}
         />
         
-        {/* Número animado: sale del cofre y se queda arriba a la derecha */}
-        {ticket !== null && (
-          <span
-            className={"ticket-fly" + (showAnim ? " ticket-fly-anim" : "")}
-            style={{
-              left: showAnim ? endLeft : startLeft,
-              top: showAnim ? endTop : startTop,
-            }}
-          >
-            #{ticket.toString().padStart(4, '0')}
-          </span>
-        )}
-        
         {/* Contenedor clickable del cofre */}
         <div
           onClick={handleChestClick}
-          className={`chest-lottie-container ${staticChest ? 'static' : ''} ${isOpen ? 'chest-opening' : 'cursor-pointer'}`}
+          className={`chest-lottie-container ${staticChest ? 'static' : 'cursor-pointer'} ${isChestOpen ? 'chest-open' : ''}`}
         >
           <Lottie
             lottieRef={lottieRef}
             animationData={chestAnimation}
-            autoplay={true}
+            autoplay={false}
             loop={false}
-            initialSegment={staticChest ? [0, 1] : undefined}
             style={{ 
               width: size, 
               height: size,
@@ -105,25 +89,16 @@ const Chest = ({ size = 250, staticChest = false }) => {
             }}
           />
         </div>
-        
-        {!staticChest && (
-          <button 
-            className="chest-action-btn" 
-            onClick={handleChestClick} 
-            type="button"
-            disabled={isOpen}
-          >
-            ¡Abrir mi número!
-          </button>
-        )}
       </div>
 
-      {showForm && !staticChest && (
+      {/* Renderizar el modal usando Portal para que esté al mismo nivel que el nav */}
+      {showModal && !staticChest && ReactDOM.createPortal(
         <RegistrationForm
-          onSubmit={handleFormSubmit}
-          onClose={handleFormClose}
-          existingTicket={existingTicket}
-        />
+          mode="button"
+          onClose={handleCloseModal}
+          onSuccess={handleRegistrationSuccess}
+        />,
+        document.body
       )}
     </>
   );

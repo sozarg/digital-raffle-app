@@ -15,6 +15,7 @@
   /* Optimización adicional para centrar mejor y mover a la derecha */
   transform: translateY(-40px) translateX(30px);
   overflow: visible; /* Permitir que las partículas se vean */
+  z-index: 10; /* Asegurar que esté por encima de otros elementos */
 }
 
 /* Lottie Container */
@@ -22,12 +23,30 @@
   display: inline-block;
   position: relative;
   margin: 0 auto;
-  cursor: default; /* Cursor normal para el contenedor */
+  cursor: pointer !important; /* Forzar cursor pointer */
   overflow: visible; /* Permitir efectos mágicos */
+  z-index: 15; /* Asegurar que esté por encima */
+  pointer-events: auto !important; /* Forzar que sea clickeable */
 }
 
 .chest-lottie-container.static {
   cursor: default; /* Cursor normal para el contenedor estático */
+  pointer-events: none !important; /* El estático no es clickeable */
+}
+
+.chest-lottie-container.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Hover effect para confirmar que funciona */
+.chest-lottie-container:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+/* Asegurar que el contenido interno del Lottie no bloquee clics */
+.chest-lottie-container > * {
+  pointer-events: none !important;
 }
 
 /* Optimización del Lottie del cofre para reducir espacio vacío */
@@ -36,14 +55,7 @@
   transform-origin: center center;
   /* Animación sutil de respiro aplicada al elemento interno */
   animation: chestBreathing 6s ease-in-out infinite;
-}
-
-/* Para el cofre estático, aplicar la misma optimización */
-.chest-lottie-container.static > div {
-  transform: scale(1.4) translate(-5%, -8%);
-  transform-origin: center center;
-  /* El cofre estático también respira */
-  animation: chestBreathing 6s ease-in-out infinite;
+  pointer-events: none !important; /* Asegurar que el elemento interno no bloquee clics */
 }
 
 /* ===============================================
@@ -268,5 +280,48 @@
   }
   60% {
     transform: translateX(-50%) translateY(-6px);
+  }
+}
+
+/* Chest Animating State - Magical Opening Effect */
+.chest-animating {
+  animation: chestOpeningMagic 0.8s ease-in-out;
+}
+
+@keyframes chestOpeningMagic {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  30% {
+    filter: brightness(1.3) drop-shadow(0 0 25px rgba(43, 130, 50, 0.7));
+    transform: scale(1.02);
+  }
+  60% {
+    filter: brightness(1.1) drop-shadow(0 0 15px rgba(43, 130, 50, 0.5));
+    transform: scale(1.01);
+  }
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+.chest-animating .chest-aura {
+  animation: auraIntensify 0.8s ease-in-out;
+}
+
+@keyframes auraIntensify {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
   }
 } 
