@@ -230,6 +230,11 @@
     transform: translateY(120px);
   }
   
+  /* Info Section - Ajustar solo el título en mobile */
+  .info-container h2 {
+    margin-top: var(--spacing-xl);
+  }
+  
   /* Buttons */
   .chest-button {
     padding: 0.7rem var(--spacing-xl);
