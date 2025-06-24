@@ -8,6 +8,7 @@ src/styles/
 ├── layout.css            # 📱 Main layout, containers, sections
 ├── animations.css        # ✨ Keyframes, transitions, effects
 ├── responsive.css        # 📱 All media queries organized
+├── admin.css             # 👨‍💼 Admin panel styles
 ├── components/
 │   ├── navbar.css        # 🧭 Navigation bar styles
 │   ├── hero.css          # 🦸‍♂️ Hero section & chest container
@@ -15,7 +16,8 @@ src/styles/
 │   ├── chest.css         # 📦 Chest component & lottie
 │   ├── buttons.css       # 🔘 All button styles
 │   ├── forms.css         # 📝 Forms, modals, inputs
-│   └── footer.css        # 🦶 Footer sections
+│   ├── footer.css        # 🦶 Footer sections
+│   └── particles.css     # ✨ Background particles effects
 └── README.md            # 📖 This guide
 ```
 
@@ -65,6 +67,18 @@ src/styles/
 - All `@keyframes` definitions
 - `.flying-number`, `.ticket-popup` animations
 - Transition effects
+
+### 👨‍💼 Admin panel changes?
+**Edit**: `admin.css`
+- Complete admin dashboard styling
+- Tables, forms, and admin-specific components
+- User management interfaces
+
+### ✨ Particle effects issues?
+**Edit**: `components/particles.css`
+- Background particle animations
+- Canvas-based effect styling
+- Particle system positioning
 
 ## 📏 CSS Variables (Design System)
 
@@ -117,6 +131,16 @@ src/styles/
 2. Find the specific `@keyframes` or animation class
 3. Adjust timing, easing, or properties
 
+### Fix particle overflow issues
+1. Open `components/particles.css`
+2. Check `.particles-container` positioning
+3. Adjust `z-index` and `overflow` properties
+
+### Admin panel styling
+1. Open `admin.css`
+2. Find specific admin component classes
+3. Modify colors using CSS variables from `base.css`
+
 ## 💡 Benefits of This Structure
 
 ✅ **Easy to find**: Each component has its own file  
@@ -132,3 +156,76 @@ src/styles/
 - **CSS variables** in `base.css` affect the entire site
 - **Responsive rules** are all in `responsive.css` for easier management
 - **Import order matters** - base styles load first, then components 
+
+## 🏗️ Naming Conventions
+
+### CSS Classes
+- **BEM-like structure**: `.component-element--modifier`
+- **Component-based**: `.chest-section`, `.card-content`
+- **Utility classes**: `.cursor-pointer`, `.overflow-hidden`
+
+### CSS Variables
+- **Colors**: `--primary-green`, `--text-primary`
+- **Spacing**: `--spacing-sm`, `--spacing-lg`
+- **Effects**: `--shadow-md`, `--transition-fast`
+
+## 🚨 Troubleshooting
+
+### ❌ Styles not applying?
+1. **Check import order** - base styles should load first
+2. **CSS specificity** - use more specific selectors if needed
+3. **Cache issues** - Hard refresh (Ctrl+F5) your browser
+
+### ❌ Mobile layout broken?
+1. **Check responsive.css** - all mobile rules are centralized there
+2. **Viewport meta tag** - ensure it's in your HTML
+3. **Test breakpoints** - 991px, 768px, 480px
+
+### ❌ Animations not smooth?
+1. **Browser performance** - check if hardware acceleration is enabled
+2. **Animation properties** - prefer `transform` and `opacity`
+3. **Reduce motion** - consider `prefers-reduced-motion` for accessibility
+
+### ❌ Font not loading?
+1. **Font paths** - check `base.css` font-face declarations
+2. **Font formats** - ensure browser compatibility
+3. **Font display** - `font-display: swap` for better performance
+
+## 📋 Best Practices
+
+### ✅ Do's
+- **Use CSS variables** for consistent theming
+- **Edit component files** individually for better organization
+- **Test responsive** on multiple devices
+- **Follow naming conventions** for maintainability
+- **Group related styles** in appropriate component files
+
+### ❌ Don'ts
+- **Don't edit style.css directly** - use modular files
+- **Don't use inline styles** - keep styles in CSS files
+- **Don't hardcode colors** - use CSS variables instead
+- **Don't ignore responsive design** - mobile-first approach
+- **Don't use !important** unless absolutely necessary
+
+## 🎯 Performance Tips
+
+### 🚀 Optimization
+- **CSS variables** reduce bundle size and improve consistency
+- **Modular structure** enables better caching
+- **Minimal specificity** improves rendering performance
+- **Font preloading** in HTML for critical fonts
+- **Animation optimization** using `transform` and `opacity`
+
+### 📊 Loading Strategy
+1. **Critical CSS** - base styles and layout load first
+2. **Component styles** - loaded as needed
+3. **Animation styles** - can be deferred
+4. **Admin styles** - only loaded for admin users
+
+## 🔗 Useful Resources
+
+- [CSS Variables Guide](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+- [BEM Methodology](https://getbem.com/)
+- [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Animation Performance](https://web.dev/animations-guide/)
