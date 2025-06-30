@@ -74,7 +74,7 @@ function HomePage() {
                         <div className="card-icon">📅</div>
                         <div className="card-info">
                           <h5 className="card-title">Fecha del Sorteo</h5>
-                          <p className="card-text">Domingo, 18 de agosto</p>
+                          <p className="card-text">9 y 10 de Agosto</p>
                         </div>
                       </div>
                     </div>
@@ -133,7 +133,7 @@ function HomePage() {
               <div className="step">
                 <div className="step-number">3</div>
                 <h3>Esperá el Sorteo</h3>
-                <p>El 10 de agosto anunciaremos los números ganadores</p>
+                <p>El 9 y10 de agosto anunciaremos los números ganadores</p>
               </div>
             </div>
           </div>
