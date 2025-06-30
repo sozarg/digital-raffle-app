@@ -133,7 +133,7 @@ function HomePage() {
               <div className="step">
                 <div className="step-number">3</div>
                 <h3>Esperá el Sorteo</h3>
-                <p>El 9 y10 de agosto anunciaremos los números ganadores</p>
+                <p>El 9 y 10 de agosto anunciaremos los números ganadores</p>
               </div>
             </div>
           </div>
