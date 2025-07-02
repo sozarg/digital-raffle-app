@@ -6,26 +6,26 @@ const ParticipantsTable = ({ onStartRaffle }) => {
 
   // 70 participantes hardcodeados
   const participants = [
-    { id: 1, name: "Juan Pérez", number: 1001, residesInAvellaneda: true, attendsSchoolInAvellaneda: false },
-    { id: 2, name: "María González", number: 1002, residesInAvellaneda: false, attendsSchoolInAvellaneda: true },
-    { id: 3, name: "Carlos Rodríguez", number: 1003, residesInAvellaneda: true, attendsSchoolInAvellaneda: true },
-    { id: 4, name: "Ana Martínez", number: 1004, residesInAvellaneda: false, attendsSchoolInAvellaneda: false },
-    { id: 5, name: "Pedro López", number: 1005, residesInAvellaneda: true, attendsSchoolInAvellaneda: false },
-    { id: 6, name: "Laura Fernández", number: 1006, residesInAvellaneda: false, attendsSchoolInAvellaneda: true },
-    { id: 7, name: "Miguel Sánchez", number: 1007, residesInAvellaneda: true, attendsSchoolInAvellaneda: true },
-    { id: 8, name: "Sofía Díaz", number: 1008, residesInAvellaneda: false, attendsSchoolInAvellaneda: false },
-    { id: 9, name: "Roberto García", number: 1009, residesInAvellaneda: true, attendsSchoolInAvellaneda: false },
-    { id: 10, name: "Carmen Ruiz", number: 1010, residesInAvellaneda: false, attendsSchoolInAvellaneda: true },
-    { id: 11, name: "Diego Morales", number: 1011, residesInAvellaneda: true, attendsSchoolInAvellaneda: true },
-    { id: 12, name: "Valentina Silva", number: 1012, residesInAvellaneda: false, attendsSchoolInAvellaneda: false },
-    { id: 13, name: "Fernando Torres", number: 1013, residesInAvellaneda: true, attendsSchoolInAvellaneda: false },
-    { id: 14, name: "Isabella Castro", number: 1014, residesInAvellaneda: false, attendsSchoolInAvellaneda: true },
-    { id: 15, name: "Joaquín Herrera", number: 1015, residesInAvellaneda: true, attendsSchoolInAvellaneda: true },
-    { id: 16, name: "Camila Vargas", number: 1016, residesInAvellaneda: false, attendsSchoolInAvellaneda: false },
-    { id: 17, name: "Mateo Jiménez", number: 1017, residesInAvellaneda: true, attendsSchoolInAvellaneda: false },
-    { id: 18, name: "Lucia Medina", number: 1018, residesInAvellaneda: false, attendsSchoolInAvellaneda: true },
-    { id: 19, name: "Santiago Ortiz", number: 1019, residesInAvellaneda: true, attendsSchoolInAvellaneda: true },
-    { id: 20, name: "Emilia Rojas", number: 1020, residesInAvellaneda: false, attendsSchoolInAvellaneda: false },
+    { id: 1, name: "Juan Pérez", number: 1001, residesInAvellaneda: true, attendsSchoolInAvellaneda: false, guardianName: "María Pérez", guardianDNI: "25123456", guardianPhone: "11-2345-6789" },
+    { id: 2, name: "María González", number: 1002, residesInAvellaneda: false, attendsSchoolInAvellaneda: true, guardianName: "Roberto González", guardianDNI: "23987654", guardianPhone: "11-3456-7890" },
+    { id: 3, name: "Carlos Rodríguez", number: 1003, residesInAvellaneda: true, attendsSchoolInAvellaneda: true, guardianName: "Ana Rodríguez", guardianDNI: "24567890", guardianPhone: "11-4567-8901" },
+    { id: 4, name: "Ana Martínez", number: 1004, residesInAvellaneda: false, attendsSchoolInAvellaneda: false, guardianName: "Luis Martínez", guardianDNI: "26789012", guardianPhone: "11-5678-9012" },
+    { id: 5, name: "Pedro López", number: 1005, residesInAvellaneda: true, attendsSchoolInAvellaneda: false, guardianName: "Carmen López", guardianDNI: "27890123", guardianPhone: "11-6789-0123" },
+    { id: 6, name: "Laura Fernández", number: 1006, residesInAvellaneda: false, attendsSchoolInAvellaneda: true, guardianName: "Miguel Fernández", guardianDNI: "28901234", guardianPhone: "11-7890-1234" },
+    { id: 7, name: "Miguel Sánchez", number: 1007, residesInAvellaneda: true, attendsSchoolInAvellaneda: true, guardianName: "Elena Sánchez", guardianDNI: "29012345", guardianPhone: "11-8901-2345" },
+    { id: 8, name: "Sofía Díaz", number: 1008, residesInAvellaneda: false, attendsSchoolInAvellaneda: false, guardianName: "Jorge Díaz", guardianDNI: "30123456", guardianPhone: "11-9012-3456" },
+    { id: 9, name: "Roberto García", number: 1009, residesInAvellaneda: true, attendsSchoolInAvellaneda: false, guardianName: "Patricia García", guardianDNI: "31234567", guardianPhone: "11-0123-4567" },
+    { id: 10, name: "Carmen Ruiz", number: 1010, residesInAvellaneda: false, attendsSchoolInAvellaneda: true, guardianName: "Fernando Ruiz", guardianDNI: "32345678", guardianPhone: "11-1234-5678" },
+    { id: 11, name: "Diego Morales", number: 1011, residesInAvellaneda: true, attendsSchoolInAvellaneda: true, guardianName: "Isabel Morales", guardianDNI: "33456789", guardianPhone: "11-2345-6789" },
+    { id: 12, name: "Valentina Silva", number: 1012, residesInAvellaneda: false, attendsSchoolInAvellaneda: false, guardianName: "Andrés Silva", guardianDNI: "34567890", guardianPhone: "11-3456-7890" },
+    { id: 13, name: "Fernando Torres", number: 1013, residesInAvellaneda: true, attendsSchoolInAvellaneda: false, guardianName: "Mónica Torres", guardianDNI: "35678901", guardianPhone: "11-4567-8901" },
+    { id: 14, name: "Isabella Castro", number: 1014, residesInAvellaneda: false, attendsSchoolInAvellaneda: true, guardianName: "Ricardo Castro", guardianDNI: "36789012", guardianPhone: "11-5678-9012" },
+    { id: 15, name: "Joaquín Herrera", number: 1015, residesInAvellaneda: true, attendsSchoolInAvellaneda: true, guardianName: "Silvia Herrera", guardianDNI: "37890123", guardianPhone: "11-6789-0123" },
+    { id: 16, name: "Camila Vargas", number: 1016, residesInAvellaneda: false, attendsSchoolInAvellaneda: false, guardianName: "Daniel Vargas", guardianDNI: "38901234", guardianPhone: "11-7890-1234" },
+    { id: 17, name: "Mateo Jiménez", number: 1017, residesInAvellaneda: true, attendsSchoolInAvellaneda: false, guardianName: "Beatriz Jiménez", guardianDNI: "39012345", guardianPhone: "11-8901-2345" },
+    { id: 18, name: "Lucia Medina", number: 1018, residesInAvellaneda: false, attendsSchoolInAvellaneda: true, guardianName: "Raúl Medina", guardianDNI: "40123456", guardianPhone: "11-9012-3456" },
+    { id: 19, name: "Santiago Ortiz", number: 1019, residesInAvellaneda: true, attendsSchoolInAvellaneda: true, guardianName: "Claudia Ortiz", guardianDNI: "41234567", guardianPhone: "11-0123-4567" },
+    { id: 20, name: "Emilia Rojas", number: 1020, residesInAvellaneda: false, attendsSchoolInAvellaneda: false, guardianName: "Alberto Rojas", guardianDNI: "42345678", guardianPhone: "11-1234-5678" },
     { id: 21, name: "Nicolás Mendoza", number: 1021, residesInAvellaneda: true, attendsSchoolInAvellaneda: false },
     { id: 22, name: "Antonella Cruz", number: 1022, residesInAvellaneda: false, attendsSchoolInAvellaneda: true },
     { id: 23, name: "Tomás Flores", number: 1023, residesInAvellaneda: true, attendsSchoolInAvellaneda: true },
@@ -146,6 +146,30 @@ const ParticipantsTable = ({ onStartRaffle }) => {
             </div>
           </div>
         </div>
+
+        {/* Información del adulto responsable */}
+        {participant.guardianName && (
+          <div className="mt-3 p-2 bg-light rounded">
+            <h6 className="text-success mb-2">
+              <i className="bi bi-person-fill me-1"></i>
+              Adulto Responsable
+            </h6>
+            <div className="row g-1">
+              <div className="col-12">
+                <small className="text-muted d-block">Nombre:</small>
+                <span className="fw-bold">{participant.guardianName}</span>
+              </div>
+              <div className="col-6">
+                <small className="text-muted d-block">DNI:</small>
+                <span>{participant.guardianDNI}</span>
+              </div>
+              <div className="col-6">
+                <small className="text-muted d-block">Teléfono:</small>
+                <span>{participant.guardianPhone}</span>
+              </div>
+            </div>
+          </div>
+        )}
         
         <div className="mt-2 pt-2 border-top">
           <div className="d-flex justify-content-between align-items-center">
@@ -209,6 +233,7 @@ const ParticipantsTable = ({ onStartRaffle }) => {
                 <th>Número de Sorteo</th>
                 <th>¿Reside en Avellaneda?</th>
                 <th>¿Asiste a escuela de Avellaneda?</th>
+                <th>Adulto Responsable</th>
                 <th>¿Apto para sorteo?</th>
               </tr>
             </thead>
@@ -243,6 +268,19 @@ const ParticipantsTable = ({ onStartRaffle }) => {
                         <i className="bi bi-x-circle-fill me-1"></i>
                         No
                       </span>
+                    )}
+                  </td>
+                  <td>
+                    {participant.guardianName ? (
+                      <div>
+                        <div className="fw-bold">{participant.guardianName}</div>
+                        <small className="text-muted">
+                          DNI: {participant.guardianDNI}<br/>
+                          Tel: {participant.guardianPhone}
+                        </small>
+                      </div>
+                    ) : (
+                      <span className="text-muted fst-italic">Sin datos</span>
                     )}
                   </td>
                   <td>

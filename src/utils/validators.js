@@ -86,6 +86,44 @@ export const validateSchoolName = (name, attendsSchool) => {
 };
 
 /**
+ * Valida el nombre completo del adulto responsable
+ * @returns {string} Mensaje de error o string vacío si es válido
+ */
+export const validateGuardianName = (name) => {
+  if (!name) return 'El nombre del adulto responsable es obligatorio';
+  if (name.length < 3) return 'El nombre debe tener al menos 3 caracteres';
+  if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name)) return 'El nombre solo puede contener letras';
+  return '';
+};
+
+/**
+ * Valida el DNI del adulto responsable
+ * @returns {string} Mensaje de error o string vacío si es válido
+ */
+export const validateGuardianDNI = (dni) => {
+  if (!dni) return 'El DNI del adulto responsable es obligatorio';
+  if (!/^\d+$/.test(dni)) return 'El DNI debe contener solo números';
+  if (dni.length < 7 || dni.length > 8) return 'El DNI debe tener 7 u 8 dígitos';
+  return '';
+};
+
+/**
+ * Valida el teléfono/celular del adulto responsable
+ * @returns {string} Mensaje de error o string vacío si es válido
+ */
+export const validateGuardianPhone = (phone) => {
+  if (!phone) return 'El teléfono del adulto responsable es obligatorio';
+  
+  // Remover espacios, guiones y paréntesis para validar solo números
+  const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+  
+  if (!/^\d+$/.test(cleanPhone)) return 'El teléfono debe contener solo números';
+  if (cleanPhone.length < 8 || cleanPhone.length > 15) return 'El teléfono debe tener entre 8 y 15 dígitos';
+  
+  return '';
+};
+
+/**
  * Valida el formulario completo
  * @returns {Object} Objeto con errores por campo
  */
@@ -109,6 +147,16 @@ export const validateForm = (formData) => {
   
   const schoolNameError = validateSchoolName(formData.schoolName, formData.attendsSchool);
   if (schoolNameError) errors.schoolName = schoolNameError;
+  
+  // Validaciones del adulto responsable
+  const guardianNameError = validateGuardianName(formData.guardianName);
+  if (guardianNameError) errors.guardianName = guardianNameError;
+  
+  const guardianDNIError = validateGuardianDNI(formData.guardianDNI);
+  if (guardianDNIError) errors.guardianDNI = guardianDNIError;
+  
+  const guardianPhoneError = validateGuardianPhone(formData.guardianPhone);
+  if (guardianPhoneError) errors.guardianPhone = guardianPhoneError;
   
   return errors;
 }; 

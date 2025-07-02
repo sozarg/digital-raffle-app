@@ -16,7 +16,10 @@ const RegistrationForm = ({
     address: '',
     attendsSchool: 'no',
     schoolName: '',
-    email: ''
+    email: '',
+    guardianName: '',
+    guardianDNI: '',
+    guardianPhone: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -268,6 +271,73 @@ const RegistrationForm = ({
             {errors.email && (
               <span className="error-message">{errors.email}</span>
             )}
+          </div>
+
+          {/* Sección del adulto responsable */}
+          <div className="form-section">
+            <h3 className="section-title">Datos del adulto responsable</h3>
+            <p className="section-description">
+              Padre, madre o tutor que acompañará al menor en caso de resultar ganador
+            </p>
+
+            <div className="form-group">
+              <label htmlFor="guardianName">Nombre completo del adulto responsable *</label>
+              <input
+                type="text"
+                id="guardianName"
+                name="guardianName"
+                value={formData.guardianName}
+                onChange={handleChange}
+                className={errors.guardianName ? 'error' : ''}
+                disabled={isSubmitting}
+                placeholder="Ej: María García"
+              />
+              {errors.guardianName && (
+                <span className="error-message">{errors.guardianName}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="guardianDNI">DNI del adulto responsable *</label>
+              <input
+                type="number"
+                id="guardianDNI"
+                name="guardianDNI"
+                value={formData.guardianDNI}
+                onChange={handleChange}
+                placeholder="Ej: 12345678 – sin puntos"
+                className={errors.guardianDNI ? 'error' : ''}
+                disabled={isSubmitting}
+              />
+              {errors.guardianDNI && (
+                <span className="error-message">{errors.guardianDNI}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="guardianPhone">Teléfono/Celular del adulto responsable *</label>
+              <input
+                type="tel"
+                id="guardianPhone"
+                name="guardianPhone"
+                value={formData.guardianPhone}
+                onChange={handleChange}
+                placeholder="Ej: 11-1234-5678"
+                className={errors.guardianPhone ? 'error' : ''}
+                disabled={isSubmitting}
+              />
+              {errors.guardianPhone && (
+                <span className="error-message">{errors.guardianPhone}</span>
+              )}
+            </div>
+          </div>
+
+          {/* Leyenda importante */}
+          <div className="important-notice">
+            <div className="notice-icon">⚠️</div>
+            <p className="notice-text">
+              <strong>Importante:</strong> La entrega de los elementos sorteados se realizará al ganador acompañado por un adulto responsable.
+            </p>
           </div>
 
           {errors.submit && (
